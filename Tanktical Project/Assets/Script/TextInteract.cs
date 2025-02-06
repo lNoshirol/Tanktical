@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using Cysharp.Threading.Tasks;
 
 public class TextInteract : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class TextInteract : MonoBehaviour
         }
     }
 
-    public void ShowText(string text, float duration = 2f)
+    public async UniTask ShowText(string text, float duration = 2f)
     {
         if (_interactText == null) return;
 
@@ -38,6 +39,7 @@ public class TextInteract : MonoBehaviour
         _interactText.text = "";
         _interactText.gameObject.SetActive(true);
         typingCoroutine = StartCoroutine(TypeText(text, duration));
+        await UniTask.WaitUntil(() => typingCoroutine != null);
     }
 
     private IEnumerator TypeText(string text, float duration)
