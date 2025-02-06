@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FightStateManager : MonoBehaviour
 {
+    private TeamStateManager _alliesTurnStateManager = new();
+    private TeamStateManager _enemiesTurnStateManager = new();
+
     public FightBaseState CurrentState { get; private set; }
 
     public void SwitchState(FightBaseState newState)

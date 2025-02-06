@@ -6,16 +6,33 @@ using UnityEngine.UI;
 public class TeamStateManager : MonoBehaviour
 {
     [field: SerializeField]
-    public GameObject FirstCharacter;
+    public Material CharacterOutline;
+
+    // test with material
+    [field: SerializeField]
+    public MeshRenderer FirstCharacter;
 
     [field: SerializeField]
-    public GameObject SecondCharacter;
+    public MeshRenderer SecondCharacter;
 
     [field: SerializeField]
-    public GameObject ThirdCharacter;
+    public MeshRenderer ThirdCharacter;
 
     [field: SerializeField]
-    public GameObject FourthCharacter;
+    public MeshRenderer FourthCharacter;
+
+    // actually used
+    [field: SerializeField]
+    public GameObject FirstCharacterUI;
+
+    [field: SerializeField]
+    public GameObject SecondCharacterUI;
+
+    [field: SerializeField]
+    public GameObject ThirdCharacterUI;
+
+    [field: SerializeField]
+    public GameObject FourthCharacterUI;
 
     public FirstTeammateTurnState FirstMateState = new();
     public SecTeammateTurnState SecondMateState = new();
