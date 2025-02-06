@@ -187,9 +187,9 @@ MonoBehaviour:
       type: {class: SpriteMuseArtifact, ns: Unity.Muse.Sprite.Artifacts, asm: Unity.Muse.Sprite}
       data:
         mode: TextToSprite
-        Guid: 2914c45e-96ef-421d-a4c0-6eacbfbb7681
+        Guid: 50a64e52-e46f-4476-8098-fe0e9df0bd89
         BatchRequestIdentifier: 
-        Seed: 24311
+        Seed: 26322
         m_Operators:
         - rid: 9113530256093085713
         - rid: 9113530256093085714
@@ -200,7 +200,7 @@ MonoBehaviour:
         history:
         - rid: 9113530256093085711
         children: []
-        m_UnsafeContent: 1
+        m_UnsafeContent: 0
     - rid: 9113530256093085712
       type: {class: GenerateCountData, ns: Unity.Muse.Sprite.Data, asm: Unity.Muse.Sprite}
       data:
@@ -250,8 +250,8 @@ MonoBehaviour:
           - 512
           - 1
           - 1
-          - 24311
-          - 2914c45e-96ef-421d-a4c0-6eacbfbb7681
+          - 26322
+          - 50a64e52-e46f-4476-8098-fe0e9df0bd89
           - 0
           - 5cc104e0-423a-473e-8034-b9d346cb2357
           - 0
