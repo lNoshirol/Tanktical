@@ -6,16 +6,16 @@ public class AllyPartyTurnState : FightBaseState
 {
     public override void EnterState(FightStateManager fightStateManager)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Ally turn start");
     }
 
     public override void ExitState(FightStateManager fightStateManager)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Ally turn end");
     }
 
     public override void UpdateState(FightStateManager fightStateManager)
     {
-        throw new System.NotImplementedException();
+
     }
 }

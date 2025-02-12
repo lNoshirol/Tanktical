@@ -6,12 +6,12 @@ public class EnemyPartyTurnState : FightBaseState
 {
     public override void EnterState(FightStateManager fightStateManager)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Enemy turn start");
     }
 
     public override void ExitState(FightStateManager fightStateManager)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Enemy turn end");
     }
 
     public override void UpdateState(FightStateManager fightStateManager)

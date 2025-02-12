@@ -4,10 +4,29 @@ using UnityEngine;
 
 public class FightStateManager : MonoBehaviour
 {
-    private TeamStateManager _alliesTurnStateManager = new();
-    private TeamStateManager _enemiesTurnStateManager = new();
+    public List<Entity> allies;
+    public List<Entity> enemies;
+    public Material AllyOutlineMaterial;
+    public Material EnemyOutlineMaterial;
+
+    public TeamStateManager AlliesTurnStateManager;
+    public TeamStateManager EnemiesTurnStateManager;
 
     public FightBaseState CurrentState { get; private set; }
+    public AllyPartyTurnState AllyTurnState { get; private set; } = new();
+    public EnemyPartyTurnState EnemyTurnState { get; private set; } = new();
+
+    private void Start() 
+    {
+        AlliesTurnStateManager = new TeamStateManager(allies, this, AllyOutlineMaterial);
+        EnemiesTurnStateManager = new TeamStateManager(enemies, this, EnemyOutlineMaterial);
+        
+        AlliesTurnStateManager.Init();
+        EnemiesTurnStateManager.Init();
+        
+        CurrentState = AllyTurnState;
+        AllyTurnState.EnterState(this);
+    }
 
     public void SwitchState(FightBaseState newState)
     {
