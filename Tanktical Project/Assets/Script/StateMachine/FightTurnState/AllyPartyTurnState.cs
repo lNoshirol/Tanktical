@@ -7,11 +7,16 @@ public class AllyPartyTurnState : FightBaseState
     public override void EnterState(FightStateManager fightStateManager)
     {
         Debug.Log("Ally turn start");
+        //fightStateManager.AlliesTurnStateManager.EntitiesInTeam[0].MeshRenderer.sharedMaterials[1].SetInt("_ShowOutline", 1);
+        fightStateManager.AlliesTurnStateManager.SwitchState(fightStateManager.AlliesTurnStateManager.FirstMateState);
     }
 
     public override void ExitState(FightStateManager fightStateManager)
     {
         Debug.Log("Ally turn end");
+        //fightStateManager.AlliesTurnStateManager.EntitiesInTeam[fightStateManager.AlliesTurnStateManager.EntitiesInTeam.Count - 1].MeshRenderer.sharedMaterials[1].SetInt("_ShowOutline", 0);
+        fightStateManager.AlliesTurnStateManager.SwitchState(null);
+        //fightStateManager.AlliesTurnStateManager.CurrentState.ExitState(fightStateManager.AlliesTurnStateManager);
     }
 
     public override void UpdateState(FightStateManager fightStateManager)

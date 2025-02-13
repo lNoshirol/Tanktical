@@ -29,19 +29,4 @@ public class StatsHandler : MonoBehaviour
         Debug.Log($"<color=#34eb4f> Former life : {life}, current life : {CurrentLife}</color>");
     }
     #endregion
-
-    public Entity first;
-    public Entity second;
-
-    public void CompareTwoEntitiesTeam()
-    {
-        if (first.TeamStateManager == second.TeamStateManager)
-        {
-            print("same team");
-        }
-        else
-        {
-            print("different team");
-        }
-    }
 }

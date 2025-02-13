@@ -6,14 +6,19 @@ using UnityEngine.UI;
 public class Entity : MonoBehaviour
 {
     public TeamStateManager TeamStateManager;
-    public MeshRenderer MeshRenderer;
+    public MeshRenderer MeshRenderer { get; set; }
     public GameObject BlackScreenUI;
-    public List<Button> SkillButtons; 
+    public List<Button> SkillButtons;
+
+    private void Awake()
+    {
+        MeshRenderer = TryGetComponent(out MeshRenderer mesh) ? mesh : null;
+    }
 
     public void AddTeamStateListeners(int state)
     {
         foreach (Button button in SkillButtons)
-        { 
+        {
             // Won't show up in the inspector because it is not a persistent listener
             button.onClick.AddListener(() => TeamStateManager.SwitchState(TeamStateManager.TeamTurnBaseStates[state]));
 
@@ -24,22 +29,26 @@ public class Entity : MonoBehaviour
     {
         foreach (Button button in SkillButtons)
         {
-            if (TeamStateManager != TeamStateManager.FightStateManager.AlliesTurnStateManager && TeamStateManager != TeamStateManager.FightStateManager.EnemiesTurnStateManager)
-            {
-                print("c'est la mer noire");
-                return;
-            }
             // Make turn change to enemies if this entity is an ally, else to allies
             if (TeamStateManager.FightStateManager.AlliesTurnStateManager == TeamStateManager)
             {
-                print("allié");
                 button.onClick.AddListener(() => TeamStateManager.FightStateManager.SwitchState(TeamStateManager.FightStateManager.EnemyTurnState));
             }
             else
             {
-                print("ennemi");
                 button.onClick.AddListener(() => TeamStateManager.FightStateManager.SwitchState(TeamStateManager.FightStateManager.AllyTurnState));
             }
         }
+    }
+
+    public void ActivateDeactivateOutline(int value)
+    {
+        if (value > 1 | value < 0) return;
+        MeshRenderer.sharedMaterials[1].SetInt("_ShowOutline", value);
+    }
+
+    public void OnDestroy()
+    {
+        MeshRenderer.sharedMaterials[1].SetInt("_ShowOutline", 0);
     }
 }

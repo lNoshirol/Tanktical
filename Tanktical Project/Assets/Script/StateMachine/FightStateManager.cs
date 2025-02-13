@@ -23,15 +23,15 @@ public class FightStateManager : MonoBehaviour
         
         AlliesTurnStateManager.Init();
         EnemiesTurnStateManager.Init();
-        
-        CurrentState = AllyTurnState;
-        AllyTurnState.EnterState(this);
+
+        CurrentState = EnemyTurnState;
+        SwitchState(AllyTurnState);
     }
 
     public void SwitchState(FightBaseState newState)
     {
         // Exit current state, then enter the new one
-        CurrentState.ExitState(this);
+        CurrentState?.ExitState(this);
         CurrentState = newState;
         CurrentState.EnterState(this);
     }

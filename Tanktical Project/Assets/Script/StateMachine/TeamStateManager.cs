@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TeamStateManager
 {
@@ -23,7 +21,7 @@ public class TeamStateManager
         new FifthTeammateTurnState()
     };
 
-    private List<Entity> _entitiesInTeam = new();
+    public List<Entity> EntitiesInTeam = new();
 
     public TeamTurnBaseState CurrentState { get; private set; }
 
@@ -33,7 +31,7 @@ public class TeamStateManager
     // Constructor
     public TeamStateManager(List<Entity> entitiesInTeam, FightStateManager fightStateManager, Material outline)
     {
-        _entitiesInTeam = entitiesInTeam;
+        EntitiesInTeam = entitiesInTeam;
         FightStateManager = fightStateManager;
         _outlineMaterial = outline;
 
@@ -47,36 +45,32 @@ public class TeamStateManager
     public void Init()
     {
         // iterate over team entities
-        for (int i = 0; i < _entitiesInTeam.Count; i++)
+        for (int i = 0; i < EntitiesInTeam.Count; i++)
         {
             state = i + 1;
-            _entitiesInTeam[i].TeamStateManager = this;
+            EntitiesInTeam[i].TeamStateManager = this;
+            EntitiesInTeam[i].MeshRenderer.sharedMaterials[1].SetInt("_ShowOutline", 0);
 
-            if (i == _entitiesInTeam.Count - 1)
+            if (i == EntitiesInTeam.Count - 1)
             {
-                _entitiesInTeam[_entitiesInTeam.Count - 1].AddFightStateListeners();
+                EntitiesInTeam[EntitiesInTeam.Count - 1].AddFightStateListeners();
             }
             else
             {
-                _entitiesInTeam[i].AddTeamStateListeners(state);
+                EntitiesInTeam[i].AddTeamStateListeners(state);
             }
         }
 
-        CurrentState = FirstMateState;
-        SwitchState(FirstMateState);
+        //CurrentState = FourthMateState;
+        //SwitchState(FirstMateState);
+        //CurrentState.ExitState(this);
     }
 
     public void SwitchState(TeamTurnBaseState newState)
     {
-        // Exit current state, then enter the new one
-        CurrentState.ExitState(this);
+        // Exit current state (if there is one), then enter the new one
+        CurrentState?.ExitState(this);
         CurrentState = newState;
-        CurrentState.EnterState(this);
-    }
-
-    private void SwitchState()
-    {
-        Debug.Log("GNNNNN");
-        SwitchState(TeamTurnBaseStates[state]);
+        CurrentState?.EnterState(this);
     }
 }
