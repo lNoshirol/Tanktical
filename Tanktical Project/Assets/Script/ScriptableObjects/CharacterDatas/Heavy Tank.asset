@@ -10,5 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58bbe3a90b0c447449a3153e43853ce3, type: 3}
-  m_Name: Character
+  m_Name: Heavy Tank
   m_EditorClassIdentifier: 
+  characterMaxLife: 1500
+  range: {x: 0, y: 5}
+  baseAttaqueTDR: 3
+  baseDamage: 125
+  mobility: 2
+  armorType: heavy
+  tankModel: {fileID: 0}
