@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterDatas : ScriptableObject
 {
     public int characterMaxLife;
-    [MinMaxSlider(0, 20)]
+    [MinMaxSlider(0, 20), InfoBox("Le x représente la porté minimal, le y la porté maximal")]
     public Vector2Int range;
     public int baseAttaqueTDR;
     public int baseDamage;
