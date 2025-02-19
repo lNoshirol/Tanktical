@@ -11,6 +11,7 @@ namespace SkillsSandBox
         public Characters _skillOwner;
         public int damageMultiplier;
         public Vector2 skillRange;
+        public int explosionDamageRange;
 
         public abstract void Use(GameObject target);
 
@@ -61,6 +62,12 @@ namespace SkillsSandBox
             //  sinon
             //    colorer en gris ou gris sombre
             //  fin sinon
+
+            //si curseur dans range du sort
+            //  foreach case dans range explosion
+            //    colorer case en jaune (ou orange)
+            //  fin foreach
+            //fin si
         }
     }
 

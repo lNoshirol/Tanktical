@@ -6,17 +6,7 @@ using UnityEngine.Rendering;
 
 public class Characters : MonoBehaviour
 {
-    [Dropdown("_charType")]
     public CharacterDatas characterType;
-    private List<CharacterDatas> _charType { get { return new List<CharacterDatas>() {Artillerie, LightTank, MediumTank, HeavyTank, TankDestryer }; } }
-
-    #region Scriptable
-    CharacterDatas Artillerie;
-    CharacterDatas LightTank;
-    CharacterDatas MediumTank;
-    CharacterDatas HeavyTank;
-    CharacterDatas TankDestryer;
-    #endregion
 
     #region Character stats
 
