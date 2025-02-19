@@ -118,12 +118,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2db940d6d4ebbc41aea839296a1cb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: {fileID: 11400000, guid: fe0fe9775e75e3948a7a6eeca25f17ec, type: 2}
-  _characterMaxLife: 1600
+  characterType: {fileID: 11400000, guid: e6e4c8d4e7ff4a7429068d895a92aadb, type: 2}
+  Artillerie: {fileID: 11400000, guid: e6e4c8d4e7ff4a7429068d895a92aadb, type: 2}
+  LightTank: {fileID: 11400000, guid: 1c9cd9b99b1cc434f82d02eaf880fa75, type: 2}
+  MediumTank: {fileID: 11400000, guid: d7032da704596484abeaac50eb9e4b51, type: 2}
+  HeavyTank: {fileID: 11400000, guid: c4795ebcfc9d0b143ad20fdbf8a17bfd, type: 2}
+  TankDestryer: {fileID: 11400000, guid: fe0fe9775e75e3948a7a6eeca25f17ec, type: 2}
+  _characterMaxLife: 1200
   _characterLife: 0
-  _range: {x: 0, y: 8}
+  _range: {x: 5, y: 8}
   _baseAttaqueTDR: 3
-  _baseDamage: 125
-  _mobility: 2
-  _armorType: medium
+  _baseDamage: 100
+  _mobility: 3
+  _armorType: light
   _tankModel: {fileID: 0}

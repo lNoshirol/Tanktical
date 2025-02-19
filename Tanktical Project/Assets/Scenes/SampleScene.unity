@@ -997,6 +997,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7700184069385917644, guid: 87e3e295eaccba94d9c35dbcee6080fa, type: 3}
+      propertyPath: characterType
+      value: 
+      objectReference: {fileID: 11400000, guid: fe0fe9775e75e3948a7a6eeca25f17ec, type: 2}
     - target: {fileID: 167676410467772187, guid: 87e3e295eaccba94d9c35dbcee6080fa, type: 3}
       propertyPath: m_Name
       value: prefabTankTest
