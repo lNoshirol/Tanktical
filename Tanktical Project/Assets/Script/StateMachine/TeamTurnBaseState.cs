@@ -5,6 +5,11 @@ using UnityEngine;
 
 public abstract class TeamTurnBaseState
 {
+    public Entity CorrespondingEntity { get; set; }
+
+    // Constructor
+    public TeamTurnBaseState() { }
+
     // enter the state
     public abstract void EnterState(TeamStateManager teamStateManager);
 
