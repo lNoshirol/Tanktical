@@ -4,11 +4,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerNavMeshController : MonoBehaviour
 {
+    [SerializeField] private Rigidbody _rb;
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] private LayerMask clickableLayers;
+    [SerializeField] public bool MovementActive = true;
 
     public void OnClickPerformed(InputAction.CallbackContext context)
     {
+        if (!MovementActive) return;
+
         if (context.performed)
         {
             Vector2 mousePosition = Mouse.current.position.ReadValue();
@@ -23,5 +27,11 @@ public class PlayerNavMeshController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void StopMovement()
+    {
+        navMeshAgent.SetDestination(transform.position);
+        _rb.velocity = Vector3.zero;
     }
 }
