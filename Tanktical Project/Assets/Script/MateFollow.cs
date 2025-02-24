@@ -12,7 +12,7 @@ public class MateFollow : MonoBehaviour
     {
         if (navMeshAgent != null && _follow)
         {
-            Vector3 position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            Vector3 position = new Vector3(_transform.position.x, _transform.position.y, _transform.position.z);
             navMeshAgent.SetDestination(position);
             StartCoroutine(Wait());
         }
