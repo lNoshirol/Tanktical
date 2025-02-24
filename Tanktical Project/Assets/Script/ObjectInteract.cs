@@ -3,23 +3,14 @@ using UnityEngine;
 
 public class ObjectInteract : MonoBehaviour
 {
-    [SerializeField] private string _text;
-    [SerializeField] private float _time;
+    [SerializeField] private InteractionData _data;
     private bool _isActive = true;
 
-    public void OnTypingText()
+    public async void OnInteract()
     {
         if (!_isActive) return;
-
-        TextInteract.Instance.ShowText(_text, _time);
-
-        StartCoroutine(Wait());
-    }
-
-    IEnumerator Wait()
-    {
         _isActive = false;
-        yield return new WaitForSeconds(_time);
+        await InteractionPlayer.PlayInteraction(_data);
         _isActive = true;
     }
 }
