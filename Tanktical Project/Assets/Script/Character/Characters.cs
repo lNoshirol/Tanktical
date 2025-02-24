@@ -1,6 +1,8 @@
 using NaughtyAttributes;
+using SkillsSandBox;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -25,14 +27,50 @@ public class Characters : MonoBehaviour
 
     #endregion
 
+    #region Character Skills
+
+    [Dropdown("SkillsList")]
+    public string FirstSkill;
+    
+    [Dropdown("SkillsList")]
+    public string SecondSkill;
+
+    public SkillsSandBox.Skill Skill1;
+    public SkillsSandBox.Skill Skill2;
+    
+    private List<string> SkillsList { get { return new List<string>() { "Basic Attack 1" ,"APFSDS 2"}; } }
+
+    private List<SkillsSandBox.Skill> _skillsObjectList = new();
+
+    #endregion
+
     #region Private Functions
 
     private void Awake()
     {
         Apply();
+
+        
     }
+
+    private void Start()
+    {
+        _skillsObjectList.Add(new BasicAttack("Basic Attack", this));
+
+        /*char test1 = FirstSkill[FirstSkill.Length - 1];
+        char test2 = SecondSkill[SecondSkill.Length - 1];
+
+        Debug.Log((int)test1 - 49);
+        Debug.Log((int)test2 - 49);*/
+
+        Skill1 = _skillsObjectList[(int)FirstSkill[FirstSkill.Length - 1] - 49];
+        //Skill2 = _skillsObjectList[SecondSkill[SecondSkill.Length - 2] - 1];
+    }
+
     private void Death()
     {
+        
+
         Characters thisGameobject;
         TryGetComponent(out thisGameobject);
 
