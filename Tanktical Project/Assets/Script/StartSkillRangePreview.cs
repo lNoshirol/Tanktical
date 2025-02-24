@@ -11,5 +11,6 @@ public class StartSkillRangePreview : MonoBehaviour
         Debug.Log("SAC A MERDE");
 
         Skill.SkillSelected();
+        SkillSelectorManager.Instance.SetSelectedSkill(Skill);
     }
 }

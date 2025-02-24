@@ -22,11 +22,19 @@ public class SkillSelectorManager : MonoBehaviour
 
     private void Update()
     {
-        LastSkillSelected.SkillSelected();
+        if (LastSkillSelected != null)
+        {
+            LastSkillSelected.SkillSelected();
+        }
     }
 
     public void SetSelectedSkill(SkillsSandBox.Skill skill)
     {
         LastSkillSelected = skill;
+    }
+
+    public void UseAttack(GameObject target)
+    {
+        LastSkillSelected.Use(target);
     }
 }

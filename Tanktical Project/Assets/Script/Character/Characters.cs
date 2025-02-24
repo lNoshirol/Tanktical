@@ -55,7 +55,7 @@ public class Characters : MonoBehaviour
 
     private void Start()
     {
-        _skillsObjectList.Add(new BasicAttack("Basic Attack", this));
+        _skillsObjectList.Add(new BasicAttack("Basic Attack", this, "ennemy"));
 
         /*char test1 = FirstSkill[FirstSkill.Length - 1];
         char test2 = SecondSkill[SecondSkill.Length - 1];

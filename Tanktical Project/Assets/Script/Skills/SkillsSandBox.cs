@@ -25,7 +25,7 @@ namespace SkillsSandBox
 
     public class BasicAttack : Skill
     {
-        public BasicAttack(string name, Characters owner) 
+        public BasicAttack(string name, Characters owner, string targetTag) 
         { 
             _skillName = name;
             _skillOwner = owner;
@@ -38,6 +38,8 @@ namespace SkillsSandBox
             gridHandler = GridHandler.Instance;
         }
 
+        public string TargetTag;
+
         public int damageOutpout;
 
         public override void Use(GameObject target)
@@ -48,7 +50,9 @@ namespace SkillsSandBox
             targetCharacter.TakeDamage(damageOutpout);
 
             _skillOwner.gameObject.TryGetComponent(out Entity _skillOwnerEntity);
+
             _skillOwnerEntity.EndTurn();
+            SkillSelectorManager.Instance.SetSelectedSkill(null);
         }
 
         public override void SkillSelected()
