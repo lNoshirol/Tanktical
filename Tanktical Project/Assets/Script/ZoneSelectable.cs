@@ -5,8 +5,8 @@ using UnityEngine;
 public class ZoneSelectable : MonoBehaviour
 {
     public Vector3 startPos;
-    public bool isSelected = false;
-    [SerializeField] private bool _isRock = false;
+    public bool IsSelected = false;
+    public bool IsRock = false;
     private List<ZoneSelectable> adjacentZones = new List<ZoneSelectable>();
 
     [Header("Paramètres de sélection")]
@@ -23,7 +23,7 @@ public class ZoneSelectable : MonoBehaviour
 
     void DetectAdjacentZones()
     {
-        if (_isRock) return;
+        if (IsRock) return;
 
         Vector3[] directions = { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
 
@@ -48,9 +48,9 @@ public class ZoneSelectable : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        if (!isSelected && SelectionZone.Instance.allSelectableZones.Contains(this))
+        if (!IsSelected && SelectionZone.Instance.allSelectableZones.Contains(this))
         {
-            isSelected = true;
+            IsSelected = true;
             SelectionZone.Instance.AddToSelectedList(this);
             StartCoroutine(MoveUp());
 
@@ -58,7 +58,7 @@ public class ZoneSelectable : MonoBehaviour
 
             foreach (ZoneSelectable zone in adjacentZones)
             {
-                if (!zone.isSelected)
+                if (!zone.IsSelected)
                 {
                     StartCoroutine(zone.ActivateSelectionDelay(newDelay));
                 }
