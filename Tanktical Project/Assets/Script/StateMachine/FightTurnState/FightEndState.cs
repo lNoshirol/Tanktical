@@ -6,12 +6,12 @@ public class FightEndState : FightBaseState
 {
     public override void EnterState(FightStateManager fightStateManager)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Fight End Start");
     }
 
     public override void ExitState(FightStateManager fightStateManager)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Fight End End");
     }
 
     public override void UpdateState(FightStateManager fightStateManager)
