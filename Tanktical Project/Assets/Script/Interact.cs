@@ -3,27 +3,27 @@ using UnityEngine.InputSystem;
 
 public class Interact : MonoBehaviour
 {
-    [SerializeField] private ObjectInteract _objectInteract;
+    private GameObject _objectInteract;
 
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (context.performed && _objectInteract != null)
         {
-            _objectInteract.OnTypingText();
+            _objectInteract.SendMessage("OnInteract");
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "ObjectInteract")
+        if (other.CompareTag("ObjectInteract"))
         {
-            _objectInteract = other.gameObject.GetComponent<ObjectInteract>();
+            _objectInteract = other.gameObject;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "ObjectInteract")
+        if (other.gameObject.CompareTag("ObjectInteract"))
         {
             _objectInteract = null;
         }
