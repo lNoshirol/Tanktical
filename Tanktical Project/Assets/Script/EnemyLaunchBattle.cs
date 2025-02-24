@@ -8,42 +8,28 @@ public class EnemyLaunchBattle : MonoBehaviour
     private PlayerNavMeshController _playerMovement;
     private bool _actif = false;
 
+    [SerializeField] private PlayerDetectorRadius _detectorRadius;
     [SerializeField] private float Radius = 10f;
     [SerializeField] private float visionAngle = 60f;
 
     void Update()
     {
-        DetectPlayer();
-    }
-
-    void DetectPlayer()
-    {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, Radius);
-
-        foreach (var hitCollider in hitColliders)
+        if (_detectorRadius.DetectedPlayer != null)
         {
-            if (hitCollider.CompareTag("Player") && !_actif)
+            _detectorRadius.DetectedPlayer.TryGetComponent(out PlayerNavMeshController _playerMovement);
+            
+            if (_playerMovement != null)
             {
-                Vector3 directionToPlayer = (hitCollider.transform.position - transform.position).normalized;
-                float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-
-                if (angleToPlayer < visionAngle / 2)
-                {
-                    if (!Physics.Raycast(transform.position, directionToPlayer, Radius))
-                    {
-                        _playerMovement = hitCollider.GetComponent<PlayerNavMeshController>();
-                        if (_playerMovement != null)
-                        {
-                            _actif = true;
-                            _playerMovement.MovementActive = false;
-                            _playerMovement.StopMovement();
-                            _navMeshAgent.SetDestination(hitCollider.transform.position);
-                            StartCoroutine(Wait());
-                        }
-                    }
-                }
+                print("Guten tag Angela");
+                _actif = true;
+                _playerMovement.MovementActive = false;
+                _playerMovement.StopMovement();
+                _navMeshAgent.SetDestination(_detectorRadius.DetectedPlayer.transform.position);
+                StartCoroutine(Wait());
             }
         }
+
+
     }
 
     IEnumerator Wait()
