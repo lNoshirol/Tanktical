@@ -106,6 +106,7 @@ public class Characters : MonoBehaviour
     private void Apply()
     {
         _characterMaxLife = characterType.characterMaxLife;
+        _characterLife = _characterMaxLife;
         _range = characterType.range;
         _baseAttaqueTDR = characterType.baseAttaqueTDR;
         _baseDamage = characterType.baseDamage;

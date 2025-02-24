@@ -51,6 +51,8 @@ namespace SkillsSandBox
 
             _skillOwner.gameObject.TryGetComponent(out Entity _skillOwnerEntity);
 
+            Debug.Log(damageOutpout);
+
             _skillOwnerEntity.EndTurn();
             SkillSelectorManager.Instance.SetSelectedSkill(null);
         }
