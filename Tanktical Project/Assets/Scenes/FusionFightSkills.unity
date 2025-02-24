@@ -8515,9 +8515,10 @@ GameObject:
   - component: {fileID: 540938470}
   - component: {fileID: 540938469}
   - component: {fileID: 540938473}
+  - component: {fileID: 540938475}
   m_Layer: 0
   m_Name: Capsule (5)
-  m_TagString: Untagged
+  m_TagString: ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8651,6 +8652,29 @@ MonoBehaviour:
   - {fileID: 822017704}
   - {fileID: 806941200}
   - {fileID: 562134609}
+--- !u!114 &540938475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540938468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2db940d6d4ebbc41aea839296a1cb3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: {fileID: 11400000, guid: d7032da704596484abeaac50eb9e4b51, type: 2}
+  _characterMaxLife: 1300
+  _characterLife: 0
+  _range: {x: 0, y: 5}
+  _baseAttaqueTDR: 2
+  _baseDamage: 100
+  _mobility: 3
+  _armorType: medium
+  _tankModel: {fileID: 0}
+  FirstSkill: Basic Attack 1
+  SecondSkill: Basic Attack 1
 --- !u!1 &546281187
 GameObject:
   m_ObjectHideFlags: 0
@@ -8972,9 +8996,10 @@ GameObject:
   - component: {fileID: 577693274}
   - component: {fileID: 577693273}
   - component: {fileID: 577693277}
+  - component: {fileID: 577693279}
   m_Layer: 0
   m_Name: Capsule (1)
-  m_TagString: Untagged
+  m_TagString: ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9108,6 +9133,29 @@ MonoBehaviour:
   - {fileID: 1177288504}
   - {fileID: 1556530348}
   - {fileID: 321875305}
+--- !u!114 &577693279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577693272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2db940d6d4ebbc41aea839296a1cb3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: {fileID: 11400000, guid: d7032da704596484abeaac50eb9e4b51, type: 2}
+  _characterMaxLife: 1300
+  _characterLife: 0
+  _range: {x: 0, y: 5}
+  _baseAttaqueTDR: 2
+  _baseDamage: 100
+  _mobility: 3
+  _armorType: medium
+  _tankModel: {fileID: 0}
+  FirstSkill: Basic Attack 1
+  SecondSkill: Basic Attack 1
 --- !u!1 &582327474
 GameObject:
   m_ObjectHideFlags: 0
@@ -12119,9 +12167,10 @@ GameObject:
   - component: {fileID: 740043522}
   - component: {fileID: 740043521}
   - component: {fileID: 740043525}
+  - component: {fileID: 740043527}
   m_Layer: 0
   m_Name: Capsule (6)
-  m_TagString: Untagged
+  m_TagString: ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12255,6 +12304,29 @@ MonoBehaviour:
   - {fileID: 1594140337}
   - {fileID: 2102780334}
   - {fileID: 1675403669}
+--- !u!114 &740043527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740043520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2db940d6d4ebbc41aea839296a1cb3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: {fileID: 11400000, guid: d7032da704596484abeaac50eb9e4b51, type: 2}
+  _characterMaxLife: 1300
+  _characterLife: 0
+  _range: {x: 0, y: 5}
+  _baseAttaqueTDR: 2
+  _baseDamage: 100
+  _mobility: 3
+  _armorType: medium
+  _tankModel: {fileID: 0}
+  FirstSkill: Basic Attack 1
+  SecondSkill: Basic Attack 1
 --- !u!1 &757727524
 GameObject:
   m_ObjectHideFlags: 0
@@ -24856,9 +24928,10 @@ GameObject:
   - component: {fileID: 1433515410}
   - component: {fileID: 1433515409}
   - component: {fileID: 1433515413}
+  - component: {fileID: 1433515415}
   m_Layer: 0
   m_Name: Capsule (7)
-  m_TagString: Untagged
+  m_TagString: ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24992,6 +25065,29 @@ MonoBehaviour:
   - {fileID: 175029201}
   - {fileID: 1088873859}
   - {fileID: 1207960895}
+--- !u!114 &1433515415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433515408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2db940d6d4ebbc41aea839296a1cb3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: {fileID: 11400000, guid: d7032da704596484abeaac50eb9e4b51, type: 2}
+  _characterMaxLife: 1300
+  _characterLife: 0
+  _range: {x: 0, y: 5}
+  _baseAttaqueTDR: 2
+  _baseDamage: 100
+  _mobility: 3
+  _armorType: medium
+  _tankModel: {fileID: 0}
+  FirstSkill: Basic Attack 1
+  SecondSkill: Basic Attack 1
 --- !u!1 &1435531720
 GameObject:
   m_ObjectHideFlags: 0
@@ -26407,9 +26503,10 @@ GameObject:
   - component: {fileID: 1546360177}
   - component: {fileID: 1546360176}
   - component: {fileID: 1546360180}
+  - component: {fileID: 1546360182}
   m_Layer: 0
   m_Name: Capsule (4)
-  m_TagString: Untagged
+  m_TagString: ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26543,6 +26640,29 @@ MonoBehaviour:
   - {fileID: 2108022354}
   - {fileID: 126338682}
   - {fileID: 2119892631}
+--- !u!114 &1546360182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546360175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2db940d6d4ebbc41aea839296a1cb3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: {fileID: 11400000, guid: d7032da704596484abeaac50eb9e4b51, type: 2}
+  _characterMaxLife: 1300
+  _characterLife: 0
+  _range: {x: 0, y: 5}
+  _baseAttaqueTDR: 2
+  _baseDamage: 100
+  _mobility: 3
+  _armorType: medium
+  _tankModel: {fileID: 0}
+  FirstSkill: Basic Attack 1
+  SecondSkill: Basic Attack 1
 --- !u!1 &1549480284
 GameObject:
   m_ObjectHideFlags: 0
@@ -26951,7 +27071,7 @@ GameObject:
   - component: {fileID: 1571254487}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28226,9 +28346,10 @@ GameObject:
   - component: {fileID: 1659936970}
   - component: {fileID: 1659936969}
   - component: {fileID: 1659936973}
+  - component: {fileID: 1659936975}
   m_Layer: 0
   m_Name: Capsule (2)
-  m_TagString: Untagged
+  m_TagString: ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28362,6 +28483,29 @@ MonoBehaviour:
   - {fileID: 1526472997}
   - {fileID: 297334285}
   - {fileID: 1881583004}
+--- !u!114 &1659936975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659936968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2db940d6d4ebbc41aea839296a1cb3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: {fileID: 11400000, guid: d7032da704596484abeaac50eb9e4b51, type: 2}
+  _characterMaxLife: 1300
+  _characterLife: 0
+  _range: {x: 0, y: 5}
+  _baseAttaqueTDR: 2
+  _baseDamage: 100
+  _mobility: 3
+  _armorType: medium
+  _tankModel: {fileID: 0}
+  FirstSkill: Basic Attack 1
+  SecondSkill: Basic Attack 1
 --- !u!1 &1667144124
 GameObject:
   m_ObjectHideFlags: 0
@@ -29205,9 +29349,10 @@ GameObject:
   - component: {fileID: 1713396138}
   - component: {fileID: 1713396137}
   - component: {fileID: 1713396141}
+  - component: {fileID: 1713396143}
   m_Layer: 0
   m_Name: Capsule (3)
-  m_TagString: Untagged
+  m_TagString: ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29341,6 +29486,29 @@ MonoBehaviour:
   - {fileID: 2049633049}
   - {fileID: 617844922}
   - {fileID: 1027985038}
+--- !u!114 &1713396143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713396136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2db940d6d4ebbc41aea839296a1cb3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: {fileID: 11400000, guid: d7032da704596484abeaac50eb9e4b51, type: 2}
+  _characterMaxLife: 1300
+  _characterLife: 0
+  _range: {x: 0, y: 5}
+  _baseAttaqueTDR: 2
+  _baseDamage: 100
+  _mobility: 3
+  _armorType: medium
+  _tankModel: {fileID: 0}
+  FirstSkill: Basic Attack 1
+  SecondSkill: Basic Attack 1
 --- !u!1 &1713976264
 GameObject:
   m_ObjectHideFlags: 0

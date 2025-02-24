@@ -6,6 +6,8 @@ public class SkillSelectorManager : MonoBehaviour
 {
     public static SkillSelectorManager Instance;
 
+    public SkillsSandBox.Skill LastSkillSelected {  get; private set; }
+
     private void Awake()
     {
         if (Instance == null)
@@ -16,5 +18,15 @@ public class SkillSelectorManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Update()
+    {
+        LastSkillSelected.SkillSelected();
+    }
+
+    public void SetSelectedSkill(SkillsSandBox.Skill skill)
+    {
+        LastSkillSelected = skill;
     }
 }

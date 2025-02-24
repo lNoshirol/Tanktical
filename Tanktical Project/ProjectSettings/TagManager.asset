@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - ObjectInteract
+  - ally
+  - ennemy
   layers:
   - Default
   - TransparentFX
