@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FightStateManager : MonoBehaviour
+public class FightStateManager
 {
-    public List<Entity> allies;
-    public List<Entity> enemies;
-    public Material AllyOutlineMaterial;
-    public Material EnemyOutlineMaterial;
+    public List<Entity> Allies;
+    public List<Entity> Enemies;
 
     public TeamStateManager AlliesTurnStateManager;
     public TeamStateManager EnemiesTurnStateManager;
@@ -16,10 +14,18 @@ public class FightStateManager : MonoBehaviour
     public AllyPartyTurnState AllyTurnState { get; private set; } = new();
     public EnemyPartyTurnState EnemyTurnState { get; private set; } = new();
 
-    private void Start() 
+    public FightStateManager(List<Entity> allies, List<Entity> enemies) { 
+        Allies = allies;
+        Enemies = enemies;
+
+        Init();
+    }
+
+
+    private void Init() 
     {
-        AlliesTurnStateManager = new TeamStateManager(allies, this, AllyOutlineMaterial);
-        EnemiesTurnStateManager = new TeamStateManager(enemies, this, EnemyOutlineMaterial);
+        AlliesTurnStateManager = new TeamStateManager(Allies, this);
+        EnemiesTurnStateManager = new TeamStateManager(Enemies, this);
         
         AlliesTurnStateManager.Init();
         EnemiesTurnStateManager.Init();

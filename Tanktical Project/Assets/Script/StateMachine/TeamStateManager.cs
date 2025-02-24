@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class TeamStateManager
 {
-    protected Material _outlineMaterial;
     public FightStateManager FightStateManager;
 
     public FirstTeammateTurnState FirstMateState;
@@ -29,11 +28,10 @@ public class TeamStateManager
     private int state = 0;
 
     // Constructor
-    public TeamStateManager(List<Entity> entitiesInTeam, FightStateManager fightStateManager, Material outline)
+    public TeamStateManager(List<Entity> entitiesInTeam, FightStateManager fightStateManager)
     {
         EntitiesInTeam = entitiesInTeam;
         FightStateManager = fightStateManager;
-        _outlineMaterial = outline;
 
         FirstMateState = (FirstTeammateTurnState)TeamTurnBaseStates[0];
         SecondMateState = (SecTeammateTurnState)TeamTurnBaseStates[1];

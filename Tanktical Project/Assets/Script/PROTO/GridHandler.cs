@@ -65,34 +65,6 @@ public class GridHandler : MonoBehaviour
             currentCellSpriteRend.color = HighlightedCellColor;
         }
 
-        //// Cells to highlight
-        //if (_oldOffsets.Count != 0)
-        //{
-        //    if (_currentPointedCell != _lastPointedCell)
-        //    {
-        //        for (int i = 0; i < _oldOffsets.Count; i++)
-        //        {
-        //            Vector2 offset = _oldOffsets[i];
-        //            if (_map.ContainsKey(new Vector2(Mathf.RoundToInt(ClickDetector.Pos.x) + offset.x, Mathf.RoundToInt(ClickDetector.Pos.z) + offset.y))) break;
-        //            _map[new Vector2(Mathf.RoundToInt(ClickDetector.Pos.x) + offset.x, Mathf.RoundToInt(ClickDetector.Pos.z) + offset.y)].TryGetComponent(out SpriteRenderer offsetSpriteRend);
-        //            offsetSpriteRend.color = BlankCellColor;
-        //            _oldOffsets.Remove(offset);
-        //        }
-        //    }
-        //}
-
-        //if (_newOffsets.Count != 0)
-        //{
-        //    foreach (Vector2 offset in _newOffsets)
-        //    {
-        //        // si _offsetsProcessed contient déjà l'offset OU s'il n'y a pas de case à cet endroit
-        //        if (!_map.ContainsKey(new Vector2(Mathf.RoundToInt(ClickDetector.Pos.x) + offset.x, Mathf.RoundToInt(ClickDetector.Pos.z) + offset.y)) | _oldOffsets.Contains(offset)) return;
-        //        _oldOffsets.Add(offset);
-        //        print("added " + offset + " to offset processed");
-        //        _map[new Vector2(Mathf.RoundToInt(ClickDetector.Pos.x) + offset.x, Mathf.RoundToInt(ClickDetector.Pos.z) + offset.y)].TryGetComponent(out SpriteRenderer offsetSpriteRend);
-        //        offsetSpriteRend.color = MovementPreviewColor;
-        //    }
-        //}
 
         if (_oldOffsets.Count > 0)
         {
