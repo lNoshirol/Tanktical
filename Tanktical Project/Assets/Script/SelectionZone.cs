@@ -34,10 +34,10 @@ public class SelectionZone : MonoBehaviour
     [SerializeField] private float timeToReachTarget = 3f;
     private float elapsedTime = 0f;
 
-    private void Start()
+    /*private void Start()
     {
         OnStartGenerate();
-    }
+    }*/
 
     public void OnStartGenerate()
     {

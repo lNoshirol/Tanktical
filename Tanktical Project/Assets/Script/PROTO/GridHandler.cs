@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,25 +6,44 @@ using UnityEngine;
 
 public class GridHandler : MonoBehaviour
 {
+    public static GridHandler Instance;
+
     public ClickDetector ClickDetector;
     public GameObject CellPrefab;
+
+    public List<GameObject> CellsList { get; private set; } = new List<GameObject>();
 
     [Header("Colors")]
     public Color BlankCellColor;
     public Color HighlightedCellColor;
     public Color MovementPreviewColor;
+    public Color EnnemyOnCaseRangePreview;
+    public Color AllyOnCaseRangePreview;
+    public Color CaseInSkillRange;
 
     // System
     private Dictionary<Vector2, GameObject> _map = new();
 
     public List<Vector2> _newOffsets = new();
-    private List<Vector2> _oldOffsets = new();
+    [SerializeField] private List<Vector2> _oldOffsets = new();
 
     private bool _isShown = true;
 
     private Vector2 _lastPointedPos;
     private GameObject _currentPointedCell;
     private GameObject _lastPointedCell;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -33,6 +53,10 @@ public class GridHandler : MonoBehaviour
             for (int y = -12; y <= 12; y++)
             {
                 GameObject newCell = Instantiate(CellPrefab, new Vector3(x, 1.51f, y), Quaternion.identity, this.transform);
+                CellsList.Add(newCell);
+
+                //newCell.AddComponent<tkt>();
+
                 newCell.transform.Rotate(Vector3.right * 90);
                 _map.Add(new Vector2(x, y), newCell);
                 if (x == -12 | x == 12 | y == -12 | y == 12)
