@@ -1,9 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyLaunchBattle : MonoBehaviour
 {
+    [SerializeField] private List<Entity> _entitiesInBattle;
     [SerializeField] private NavMeshAgent _navMeshAgent;
     private PlayerNavMeshController _playerMovement;
     private bool _actif = false;
@@ -28,8 +30,6 @@ public class EnemyLaunchBattle : MonoBehaviour
                 StartCoroutine(Wait());
             }
         }
-
-
     }
 
     IEnumerator Wait()
@@ -41,10 +41,7 @@ public class EnemyLaunchBattle : MonoBehaviour
     public void LaunchBattle()
     {
         GenerateBattle.Instance.GenerateTerrain();
-        if (_playerMovement != null)
-        {
-            _playerMovement.MovementActive = true;
-        }
+        FightStateManager fight = new(PlayerTeam.Instance.Team, _entitiesInBattle);
         Destroy(gameObject);
     }
 

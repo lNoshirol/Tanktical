@@ -55,7 +55,7 @@ public class Characters : MonoBehaviour
 
     private void Start()
     {
-        _skillsObjectList.Add(new BasicAttack("Basic Attack", this));
+        _skillsObjectList.Add(new BasicAttack("Basic Attack", this, "ennemy"));
 
         /*char test1 = FirstSkill[FirstSkill.Length - 1];
         char test2 = SecondSkill[SecondSkill.Length - 1];
@@ -106,6 +106,7 @@ public class Characters : MonoBehaviour
     private void Apply()
     {
         _characterMaxLife = characterType.characterMaxLife;
+        _characterLife = _characterMaxLife;
         _range = characterType.range;
         _baseAttaqueTDR = characterType.baseAttaqueTDR;
         _baseDamage = characterType.baseDamage;
