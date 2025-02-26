@@ -15,6 +15,8 @@ public class TacticalNukeVFX : VFXSequenceBase
     private Camera _camera;
     
     /// <inheritdoc cref="VFXSequenceBase"/>
+    /// <param name="bulletOffset"> Where the bomb will be dropped </param>
+    /// <param name="enemy"> The Enemy parameter calculate if the plane will go from left to right or right to left. </param>
     public override void Init(Vector3 nukeFinalPosition, bool enemy)
     {
         _endPosition = nukeFinalPosition;

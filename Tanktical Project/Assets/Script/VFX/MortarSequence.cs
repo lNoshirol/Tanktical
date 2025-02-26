@@ -13,6 +13,8 @@ public class MortarSequence : VFXSequenceBase
     private Vector3 _endPosition;
     
     /// <inheritdoc cref="VFXSequenceBase"/>
+    /// <param name="bulletOffset"> Where the final position of the cannon ball will be, where to shoot </param>
+    /// <remarks> The spawn point of the bullet is the initial position of this GameObject. </remarks>
     public override void Init(Vector3 cannonBallOffset, bool _)
     {
         _endPosition = cannonBallOffset;
