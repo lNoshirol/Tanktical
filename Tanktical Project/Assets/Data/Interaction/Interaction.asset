@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0b2b773d4db8b419c994bf695ea57f, type: 3}
+  m_Name: Interaction
+  m_EditorClassIdentifier: 
+  Actions:
+  - rid: 834599154681643008
+  - rid: 834599154681643009
+  references:
+    version: 2
+    RefIds:
+    - rid: 834599154681643008
+      type: {class: SayAction, ns: , asm: Assembly-CSharp}
+      data:
+        _text: J'aime les short bleu, est-ce que t'aime toi ausssi ?
+        _time: 2
+    - rid: 834599154681643009
+      type: {class: TerminateAction, ns: , asm: Assembly-CSharp}
+      data: 
