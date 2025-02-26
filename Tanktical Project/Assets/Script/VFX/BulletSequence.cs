@@ -1,3 +1,4 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -12,9 +13,13 @@ public class BulletSequence : VFXSequenceBase
 
     private Vector3 _endPosition;
 
-    public void Init(Vector3 bulletOffset)
+    /// <inheritdoc cref="VFXSequenceBase"/>
+    /// <param name="bulletOffset"> Where the final position of the bullet will be, where to shoot </param>
+    /// <remarks> The spawn point of the bullet is the initial position of this GameObject. </remarks>
+    public override void Init(Vector3 bulletOffset, bool _)
     {
         _endPosition = bulletOffset;
+        _cts = new CancellationTokenSource();
     }
 
     public override async UniTask PlaySequence(OnHitCallback callback)
@@ -46,15 +51,17 @@ public class BulletSequence : VFXSequenceBase
             {
                 isbulletFinished = true;
                 bullet.gameObject.SetActive(false);
-                callback();
+                if(callback != null) callback();
             });
 
-            while (!isbulletFinished || _fire.HasAnySystemAwake() || _smoke.HasAnySystemAwake())
-            {
+            do {
                 if (_cts.IsCancellationRequested) break;
                 await UniTask.DelayFrame(1);
-            }
+            } while (!isbulletFinished || _fire.HasAnySystemAwake() || _smoke.HasAnySystemAwake());
 
+            _smoke.Stop();
+            _fire.Stop();
+            bullet.transform.DOKill();
             this.gameObject.SetActive(false);
         }
     }
