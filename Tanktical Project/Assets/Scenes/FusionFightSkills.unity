@@ -405,6 +405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Pos: {x: 0, y: 0, z: 0}
   LastEnityHit: {fileID: 0}
+  currentObjectHit: {fileID: 0}
 --- !u!1 &41865956
 GameObject:
   m_ObjectHideFlags: 0
@@ -23079,7 +23080,7 @@ GameObject:
   - component: {fileID: 1338764346}
   - component: {fileID: 1338764347}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Grid 29FF00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23116,16 +23117,14 @@ MonoBehaviour:
   CellPrefab: {fileID: 6792856405609658322, guid: 95fb60e4c7e15d34a87f387d35070a9f, type: 3}
   BlankCellColor: {r: 1, g: 1, b: 1, a: 0.11764706}
   HighlightedCellColor: {r: 0, g: 0.5784075, b: 1, a: 0.78431374}
-  MovementPreviewColor: {r: 0.16183531, g: 1, b: 0, a: 0.5294118}
+  MovementPreviewColor: {r: 1, g: 0.46666667, b: 0, a: 0.5294118}
   EnnemyOnCaseRangePreview: {r: 1, g: 0, b: 0, a: 0.5019608}
   AllyOnCaseRangePreview: {r: 0, g: 1, b: 0.06020379, a: 0.5019608}
   CaseInSkillRange: {r: 0, g: 0.84290695, b: 1, a: 0.5019608}
-  _newOffsets:
-  - {x: 1, y: 0}
-  - {x: -1, y: 0}
-  - {x: 0, y: 1}
-  - {x: 0, y: -1}
+  CaseInDamageZone: {r: 1, g: 0.46737644, b: 0, a: 0.5019608}
+  _newOffsets: []
   _oldOffsets: []
+  CurrentPointedCell: {fileID: 0}
 --- !u!1 &1340988962
 GameObject:
   m_ObjectHideFlags: 0
@@ -25908,20 +25907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d457fe4dec5771419dfb643c4fc7b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allies:
-  - {fileID: 1571254486}
-  - {fileID: 577693278}
-  - {fileID: 1659936974}
-  - {fileID: 1713396142}
-  - {fileID: 1713396142}
-  enemies:
-  - {fileID: 1546360181}
-  - {fileID: 540938474}
-  - {fileID: 740043526}
-  - {fileID: 1433515414}
-  - {fileID: 1433515414}
-  AllyOutlineMaterial: {fileID: 2100000, guid: ad2579884530ea8498d4c078524c9d30, type: 2}
-  EnemyOutlineMaterial: {fileID: 2100000, guid: 46e18b707e43af64e8b80fc9ee3a9f01, type: 2}
 --- !u!1 &1496549150
 GameObject:
   m_ObjectHideFlags: 0
@@ -26781,7 +26766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: {fileID: 11400000, guid: d7032da704596484abeaac50eb9e4b51, type: 2}
   _characterMaxLife: 1300
-  _characterLife: 0
+  _characterLife: 1300
   _range: {x: 0, y: 5}
   _baseAttaqueTDR: 2
   _baseDamage: 100

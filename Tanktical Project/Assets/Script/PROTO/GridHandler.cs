@@ -20,6 +20,7 @@ public class GridHandler : MonoBehaviour
     public Color EnnemyOnCaseRangePreview;
     public Color AllyOnCaseRangePreview;
     public Color CaseInSkillRange;
+    public Color CaseInDamageZone;
 
     // System
     private Dictionary<Vector2, GameObject> _map = new();
@@ -30,7 +31,7 @@ public class GridHandler : MonoBehaviour
     private bool _isShown = true;
 
     private Vector2 _lastPointedPos;
-    private GameObject _currentPointedCell;
+    public GameObject CurrentPointedCell;
     private GameObject _lastPointedCell;
 
     private void Awake()
@@ -66,8 +67,8 @@ public class GridHandler : MonoBehaviour
                 }
             }
         }
-        _currentPointedCell = _map[Vector2.zero];
-        _lastPointedCell = _currentPointedCell;
+        CurrentPointedCell = _map[Vector2.zero];
+        _lastPointedCell = CurrentPointedCell;
     }
 
     private void Update()
@@ -76,16 +77,16 @@ public class GridHandler : MonoBehaviour
         
         if (!(ClickDetector.Pos.x > 12 | ClickDetector.Pos.x < -12 | ClickDetector.Pos.z > 12 | ClickDetector.Pos.z < -12))
         {
-            _currentPointedCell = _map[new Vector2(Mathf.RoundToInt(ClickDetector.Pos.x), Mathf.RoundToInt(ClickDetector.Pos.z))];
+            CurrentPointedCell = _map[new Vector2(Mathf.RoundToInt(ClickDetector.Pos.x), Mathf.RoundToInt(ClickDetector.Pos.z))];
         }
 
 
-        if (_currentPointedCell != _lastPointedCell && _currentPointedCell != null)
+        if (CurrentPointedCell != _lastPointedCell && CurrentPointedCell != null)
         {
             _lastPointedCell.TryGetComponent(out SpriteRenderer lastCellSpriteRend);
             lastCellSpriteRend.color = BlankCellColor;
-            _lastPointedCell = _currentPointedCell;
-            _currentPointedCell.TryGetComponent(out SpriteRenderer currentCellSpriteRend);
+            _lastPointedCell = CurrentPointedCell;
+            CurrentPointedCell.TryGetComponent(out SpriteRenderer currentCellSpriteRend);
             currentCellSpriteRend.color = HighlightedCellColor;
         }
 
@@ -97,7 +98,7 @@ public class GridHandler : MonoBehaviour
                 Vector2 oldOffset = _oldOffsets[i];
                 if (_map.ContainsKey(oldOffset))
                 {
-                    if (_map[oldOffset] == _currentPointedCell) break;
+                    if (_map[oldOffset] == CurrentPointedCell) break;
                     _map[oldOffset].TryGetComponent(out SpriteRenderer oldCellSpriteRend);
                     oldCellSpriteRend.color = BlankCellColor;
                     _oldOffsets.Remove(oldOffset);
