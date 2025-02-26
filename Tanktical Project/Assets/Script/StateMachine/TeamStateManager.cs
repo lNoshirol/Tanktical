@@ -21,7 +21,7 @@ public class TeamStateManager
         new FifthTeammateTurnState()
     };
 
-    public List<Entity> EntitiesInTeam = new();
+    public List<Entity> EntitiesInTeam;
 
     public TeamTurnBaseState CurrentState { get; private set; }
 
@@ -39,15 +39,20 @@ public class TeamStateManager
         ThirdMateState = (ThirdTeammateTurnState)TeamTurnBaseStates[2];
         FourthMateState = (FourthTeammateTurnState)TeamTurnBaseStates[3];
         FifthMateState = (FifthTeammateTurnState)TeamTurnBaseStates[4];
+
+        Init();
     }
 
     public void Init()
     {
+        bool isFriend = (FightStateManager.AlliesTurnStateManager == this);
+
         // iterate over team entities
         for (int i = 0; i < EntitiesInTeam.Count; i++)
         {
             state = i + 1;
             EntitiesInTeam[i].TeamStateManager = this;
+
             EntitiesInTeam[i].MeshRenderer.sharedMaterials[1].SetInt("_ShowOutline", 0);
 
             if (i == EntitiesInTeam.Count - 1)

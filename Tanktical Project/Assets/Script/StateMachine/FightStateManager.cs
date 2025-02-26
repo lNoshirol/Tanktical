@@ -18,15 +18,15 @@ public class FightStateManager
         Allies = allies;
         Enemies = enemies;
 
-        Init();
+        //Init();
     }
 
 
-    private void Init() 
+    public void Init() 
     {
         AlliesTurnStateManager = new TeamStateManager(Allies, this);
         EnemiesTurnStateManager = new TeamStateManager(Enemies, this);
-        
+
         AlliesTurnStateManager.Init();
         EnemiesTurnStateManager.Init();
 
