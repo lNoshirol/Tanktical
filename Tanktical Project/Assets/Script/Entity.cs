@@ -8,6 +8,7 @@ public class Entity : MonoBehaviour
 {
     public TeamStateManager TeamStateManager;
     public MeshRenderer MeshRenderer { get; set; }
+    public Characters Character { get; set; }
 
     public event Action OnEndTurn;
 
@@ -18,34 +19,16 @@ public class Entity : MonoBehaviour
     private void Awake()
     {
         MeshRenderer = TryGetComponent(out MeshRenderer mesh) ? mesh : null;
+        Character = TryGetComponent(out Characters character) ? character : null;
     }
 
     public void AddTeamStateListeners(int state)
     {
-        //foreach (Button button in SkillButtons)
-        //{
-        //    // Won't show up in the inspector because it is not a persistent listener
-        //    button.onClick.AddListener(() => TeamStateManager.SwitchState(TeamStateManager.TeamTurnBaseStates[state]));
-
-        //}
         OnEndTurn += () => TeamStateManager.SwitchState(TeamStateManager.TeamTurnBaseStates[state]);
     }
 
     public void AddFightStateListeners()
     {
-        //foreach (Button button in SkillButtons)
-        //{
-        //    // Make turn change to enemies if this entity is an ally, else to allies
-        //    if (TeamStateManager.FightStateManager.AlliesTurnStateManager == TeamStateManager)
-        //    {
-        //        button.onClick.AddListener(() => TeamStateManager.FightStateManager.SwitchState(TeamStateManager.FightStateManager.EnemyTurnState));
-        //    }
-        //    else
-        //    {
-        //        button.onClick.AddListener(() => TeamStateManager.FightStateManager.SwitchState(TeamStateManager.FightStateManager.AllyTurnState));
-        //    }
-        //}
-
         if (TeamStateManager.FightStateManager.AlliesTurnStateManager == TeamStateManager)
         {
             OnEndTurn += () => TeamStateManager.FightStateManager.SwitchState(TeamStateManager.FightStateManager.EnemyTurnState);
@@ -70,5 +53,15 @@ public class Entity : MonoBehaviour
     public void EndTurn()
     {
         OnEndTurn?.Invoke();
+    }
+
+    public void ShowSkillsPanel()
+    {
+        Character.ShowSkillsPanel();
+    }
+
+    public void HideSkillsPanel()
+    {
+        Character.HideSkillsPanel();
     }
 }

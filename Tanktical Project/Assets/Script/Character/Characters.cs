@@ -1,3 +1,4 @@
+using DG.Tweening;
 using NaughtyAttributes;
 using SkillsSandBox;
 using System.Collections;
@@ -5,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class Characters : MonoBehaviour
 {
@@ -47,13 +49,20 @@ public class Characters : MonoBehaviour
 
     #endregion
 
+    #region UI
+    [SerializeField] private Image _healthBarFill;
+    [SerializeField] private GameObject _skillsPanel;
+    [SerializeField] private GameObject _skillPanelShownGizmo;
+    private Vector3 _panelBasePos;
+    private bool _isSkillsPanelShown;
+    #endregion
+
     #region Private Functions
 
     private void Awake()
     {
         Apply();
-
-        
+        _panelBasePos = _skillsPanel.transform.position;
     }
 
     private void Start()
@@ -103,8 +112,6 @@ public class Characters : MonoBehaviour
 
     #endregion
 
-
-
     [Button("Apply stats")]
     private void Apply()
     {
@@ -131,5 +138,22 @@ public class Characters : MonoBehaviour
     public int GetLife()
     {
         return _characterLife;
+    }
+
+    public void UpdateLifeUI()
+    {
+        _healthBarFill.DOFillAmount(_characterLife / _characterMaxLife, 0.5f);
+    }
+
+    public void ShowSkillsPanel()
+    {
+        if (_isSkillsPanelShown | _skillsPanel == null) return;
+        _skillsPanel.transform.DOMoveY(_skillPanelShownGizmo.transform.position.y, 0.7f);
+    }
+
+    public void HideSkillsPanel()
+    {
+        if (!_isSkillsPanelShown | _skillsPanel == null) return;
+        _skillsPanel.transform.DOMoveY(_panelBasePos.y, 0.4f);
     }
 }

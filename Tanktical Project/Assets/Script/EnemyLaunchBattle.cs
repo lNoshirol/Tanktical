@@ -19,7 +19,6 @@ public class EnemyLaunchBattle : MonoBehaviour
 
     void Update()
     {
-         
         if (_detectorRadius.DetectedPlayer != null && _fightCoroutine == null)
         {
             _detectorRadius.DetectedPlayer.TryGetComponent(out PlayerNavMeshController _playerMovement);

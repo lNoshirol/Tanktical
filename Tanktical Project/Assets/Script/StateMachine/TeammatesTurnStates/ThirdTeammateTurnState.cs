@@ -6,21 +6,14 @@ public class ThirdTeammateTurnState : TeamTurnBaseState
 {
     public override void EnterState(TeamStateManager teamStateManager)
     {
-        Debug.Log("Third teammate turn");
         teamStateManager.EntitiesInTeam[2].ActivateDeactivateOutline(1);
-
-        //teamStateManager.ThirdCharacterUI.SetActive(false);
-        //teamStateManager.ThirdCharacterUI.gameObject.transform.parent.localScale = Vector3.one * 0.6f;
-        //teamStateManager.ThirdCharacter.sharedMaterials[1].SetInt("_ShowOutline", 1);
+        teamStateManager.EntitiesInTeam[2].ShowSkillsPanel();
     }
 
     public override void ExitState(TeamStateManager teamStateManager)
     {
         teamStateManager.EntitiesInTeam[2].ActivateDeactivateOutline(0);
-
-        //teamStateManager.ThirdCharacterUI.SetActive(true);
-        //teamStateManager.ThirdCharacterUI.gameObject.transform.parent.localScale = Vector3.one * 0.4f;
-        //teamStateManager.ThirdCharacter.sharedMaterials[1].SetInt("_ShowOutline", 0);
+        teamStateManager.EntitiesInTeam[2].HideSkillsPanel();
     }
 
     public override void UpdateState(TeamStateManager teamStateManager)
