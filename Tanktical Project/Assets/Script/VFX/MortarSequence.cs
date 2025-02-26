@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -11,10 +12,14 @@ public class MortarSequence : VFXSequenceBase
     [SerializeField] private VisualEffect _fire;
 
     private Vector3 _endPosition;
-
-    public void Init(Vector3 cannonBallOffset)
+    
+    /// <inheritdoc cref="VFXSequenceBase"/>
+    /// <param name="bulletOffset"> Where the final position of the cannon ball will be, where to shoot </param>
+    /// <remarks> The spawn point of the bullet is the initial position of this GameObject. </remarks>
+    public override void Init(Vector3 cannonBallOffset, bool _)
     {
         _endPosition = cannonBallOffset;
+        _cts = new CancellationTokenSource();
     }
 
     public override async UniTask PlaySequence(OnHitCallback callback)
@@ -46,15 +51,18 @@ public class MortarSequence : VFXSequenceBase
             {
                 isCannonBallFinished = true;
                 cannonBall.gameObject.SetActive(false);
-                callback();
+                if(callback != null) callback();
             });
 
-            while (!isCannonBallFinished || _fire.HasAnySystemAwake() || _smoke.HasAnySystemAwake())
-            {
-                if (_cts.IsCancellationRequested) return;
+            do {
+                if (_cts.IsCancellationRequested) break;
                 await UniTask.DelayFrame(1);
-            }
+            } while (!isCannonBallFinished || _fire.HasAnySystemAwake() || _smoke.HasAnySystemAwake());
 
+            _smoke.Stop();
+            _fire.Stop();
+            cannonBall.transform.DOKill();
+            
             this.gameObject.SetActive(false);
         }
     }
