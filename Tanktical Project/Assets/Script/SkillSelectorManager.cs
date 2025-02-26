@@ -35,6 +35,9 @@ public class SkillSelectorManager : MonoBehaviour
 
     public void UseAttack(GameObject target)
     {
-        LastSkillSelected.Use(target);
+        if (LastSkillSelected!=null)
+        {
+            LastSkillSelected.Use(target);
+        }
     }
 }

@@ -6,13 +6,58 @@ public class AssignPlayerWithButton : MonoBehaviour
 {
     [SerializeField] Characters character;
 
+    [SerializeField] private StartSkillRangePreview _startSkillRangePreview;
+
+    private SkillsSandBox.Skill _skillToPreview;
+
+    [SerializeField] private int idSkill;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     [SerializeField] GameObject skillButton1;
     [SerializeField] GameObject skillButton2;
     [SerializeField] GameObject skillButton3;
     [SerializeField] GameObject skillButton4;
 
 
-    public GameObject test;
+    [SerializeField] StartSkillRangePreview SkillRangePreviewManager;
 
     private async void Start()
     {
@@ -21,14 +66,25 @@ public class AssignPlayerWithButton : MonoBehaviour
         if (character.Skill1 != null)
         {
             skillButton1.GetComponentInChildren<TextMeshProUGUI>().text = character.Skill1._skillName;
-            Debug.Log(character.Skill1._skillName);
+            SkillRangePreviewManager.GetComponent<StartSkillRangePreview>().Skill = character.Skill1;
         }
 
         if (character.Skill2 != null)
         {
             skillButton2.GetComponentInChildren<TextMeshProUGUI>().text = character.Skill2._skillName;
+            SkillRangePreviewManager.GetComponent<StartSkillRangePreview>().Skill = character.Skill1;
         }
 
-        test.GetComponent<StartSkillRangePreview>().Skill = character.Skill1;
+        if (character.Skill1 != null)
+        {
+            skillButton1.GetComponentInChildren<TextMeshProUGUI>().text = character.Skill1._skillName;
+            SkillRangePreviewManager.GetComponent<StartSkillRangePreview>().Skill = character.Skill1;
+        }
+
+        if (character.Skill2 != null)
+        {
+            skillButton2.GetComponentInChildren<TextMeshProUGUI>().text = character.Skill2._skillName;
+            SkillRangePreviewManager.GetComponent<StartSkillRangePreview>().Skill = character.Skill1;
+        }
     }
 }

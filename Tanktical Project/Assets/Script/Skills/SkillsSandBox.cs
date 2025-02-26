@@ -9,6 +9,7 @@ namespace SkillsSandBox
     public abstract class Skill
     {
         protected GridHandler gridHandler;
+        protected ClickDetector clickDetector;
 
         public string _skillName;
         public Characters _skillOwner;
@@ -21,6 +22,18 @@ namespace SkillsSandBox
         public abstract void SkillSelected();
 
         public abstract void SetSkillOwner(Characters owner);
+
+        public GameObject GetUnitCase(GameObject owner)
+        {
+            foreach(GameObject cell in gridHandler.CellsList)
+            {
+                if (Vector3.Distance(cell.transform.position, owner.transform.position) <= 0.99f)
+                {
+                    return cell;
+                }
+            }
+            return null;
+        }
     }
 
     public class BasicAttack : Skill
@@ -31,16 +44,22 @@ namespace SkillsSandBox
             _skillOwner = owner;
 
             damageMultiplier = 100;
+            zoneDamageRange = 3;
 
             damageOutpout = _skillOwner.characterType.baseDamage * (damageMultiplier/100);
             skillRange = _skillOwner.characterType.range;
 
             gridHandler = GridHandler.Instance;
+            clickDetector = ClickDetector.Instance;
         }
 
         public string TargetTag;
 
         public int damageOutpout;
+
+        public float zoneDamageRange;
+
+
 
         public override void Use(GameObject target)
         {
@@ -51,15 +70,29 @@ namespace SkillsSandBox
 
             _skillOwner.gameObject.TryGetComponent(out Entity _skillOwnerEntity);
 
-            Debug.Log(damageOutpout);
 
             _skillOwnerEntity.EndTurn();
             SkillSelectorManager.Instance.SetSelectedSkill(null);
+
+            gridHandler._newOffsets.Clear();
         }
 
         public override void SkillSelected()
         {
-            Debug.Log(gridHandler.CellsList.Count);
+
+            if (Vector3.Distance(_skillOwner.transform.position, clickDetector.Pos) <= skillRange.y)
+            {
+                for (int i = (int)-zoneDamageRange; i <= zoneDamageRange; i++)
+                {
+                    for (int j = (int)-zoneDamageRange; j <= zoneDamageRange; j++)
+                    {
+                        if (!gridHandler._newOffsets.Contains(new Vector2(j, i)) && Mathf.Abs(i) + Mathf.Abs(j) <= zoneDamageRange)
+                        {
+                            gridHandler._newOffsets.Add(new Vector2(j, i));
+                        }
+                    }
+                }
+            }
 
             foreach (GameObject cells in gridHandler.CellsList) //cases "walkable" du terrain
             {
@@ -69,7 +102,7 @@ namespace SkillsSandBox
                 if (Vector3.Distance(_skillOwner.transform.position, cells.transform.position) >= skillRange.x && Vector3.Distance(_skillOwner.transform.position, cells.transform.position) <= skillRange.y) //  si dans la range du skill
                 {
                     if (skillRange == Vector2.one) //si troupe ennemi sur case
-                    { 
+                    {
                         currentCellsSpriteRenderer.color = gridHandler.EnnemyOnCaseRangePreview; //colorer la case en rouge
                     }
                     else if (skillRange == Vector2.right) //sinon si troupe allié sur case
@@ -83,20 +116,16 @@ namespace SkillsSandBox
                     }
                     //    fin sinon
                 }
-                    //  fin si
+                //  fin si
                 //  sinon
                 else
                 {
-                //    colorer en gris ou gris sombre
+                    //    colorer en gris ou gris sombre
 
                 }
                 //  fin sinon
 
-                //si curseur dans range du sort
-                //  foreach case dans range explosion
-                //    colorer case en jaune (ou orange)
-                //  fin foreach
-                //fin si
+                
             }
         }
 

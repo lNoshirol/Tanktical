@@ -9,6 +9,7 @@ public class ClickDetector : MonoBehaviour
 
     public Vector3 Pos;
     public GameObject LastEnityHit;
+    public GameObject currentObjectHit;
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class ClickDetector : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             Pos = hit.point;
+            currentObjectHit = hit.collider.gameObject;
 
             GameObject objectHit = hit.collider.gameObject;
 
