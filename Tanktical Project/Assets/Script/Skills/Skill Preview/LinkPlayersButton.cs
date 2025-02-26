@@ -16,8 +16,8 @@ public class LinkPlayersButton : MonoBehaviour
 
         _buttonsList[0].GetComponent<SkillAssignToButton>().Skill = _character.Skill1;
         _buttonsList[1].GetComponent<SkillAssignToButton>().Skill = _character.Skill2;
-        _buttonsList[2].GetComponent<SkillAssignToButton>().Skill = _character.Skill3;
-        _buttonsList[3].GetComponent<SkillAssignToButton>().Skill = _character.Skill4;
+        //_buttonsList[2].GetComponent<SkillAssignToButton>().Skill = _character.Skill3;
+        //_buttonsList[3].GetComponent<SkillAssignToButton>().Skill = _character.Skill4;
 
         foreach (GameObject button in _buttonsList)
         {

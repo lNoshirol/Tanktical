@@ -82,6 +82,9 @@ namespace SkillsSandBox
                 foreach (GameObject ennemy in EnitityList.instance.EnnemyList)
                 {
                     if (Vector3.Distance(target.transform.position, ennemy.transform.position) <= zoneDamageRange)
+                    {
+
+                    }
                 }
             }
 
