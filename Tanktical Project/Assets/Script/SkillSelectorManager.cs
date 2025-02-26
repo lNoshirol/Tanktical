@@ -35,7 +35,9 @@ public class SkillSelectorManager : MonoBehaviour
 
     public void UseAttack(GameObject target)
     {
-        if (LastSkillSelected!=null)
+        float distance = Vector3.Distance(LastSkillSelected._skillOwner.transform.position, target.transform.position);
+
+        if (LastSkillSelected!=null && distance >= LastSkillSelected.skillRange.x && distance <= LastSkillSelected.skillRange.y)
         {
             LastSkillSelected.Use(target);
         }
