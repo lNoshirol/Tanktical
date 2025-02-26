@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -18,6 +19,7 @@ public class MortarSequence : VFXSequenceBase
     public override void Init(Vector3 cannonBallOffset, bool _)
     {
         _endPosition = cannonBallOffset;
+        _cts = new CancellationTokenSource();
     }
 
     public override async UniTask PlaySequence(OnHitCallback callback)

@@ -1,3 +1,4 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -18,6 +19,7 @@ public class BulletSequence : VFXSequenceBase
     public override void Init(Vector3 bulletOffset, bool _)
     {
         _endPosition = bulletOffset;
+        _cts = new CancellationTokenSource();
     }
 
     public override async UniTask PlaySequence(OnHitCallback callback)

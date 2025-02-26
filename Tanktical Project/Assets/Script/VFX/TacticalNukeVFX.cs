@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class TacticalNukeVFX : VFXSequenceBase
     /// <param name="enemy"> The Enemy parameter calculate if the plane will go from left to right or right to left. </param>
     public override void Init(Vector3 nukeFinalPosition, bool enemy)
     {
+        _cts = new CancellationTokenSource();
+        
         _endPosition = nukeFinalPosition;
         _enemy = enemy;
         
