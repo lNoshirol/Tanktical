@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyLaunchBattle : MonoBehaviour
 {
-    [SerializeField] private List<Entity> _entitiesInBattle;
+    [SerializeField] private List<Entity> _entitiesInBattle = new();
     [SerializeField] private NavMeshAgent _navMeshAgent;
     private PlayerNavMeshController _playerMovement;
     private bool _actif = false;
@@ -14,20 +14,23 @@ public class EnemyLaunchBattle : MonoBehaviour
     [SerializeField] private float Radius = 10f;
     [SerializeField] private float visionAngle = 60f;
 
+    private Coroutine _fightCoroutine;
+    private FightStateManager _someFight;
+
     void Update()
     {
-        if (_detectorRadius.DetectedPlayer != null)
+         
+        if (_detectorRadius.DetectedPlayer != null && _fightCoroutine == null)
         {
             _detectorRadius.DetectedPlayer.TryGetComponent(out PlayerNavMeshController _playerMovement);
             
             if (_playerMovement != null)
             {
-                print("Guten tag Angela");
                 _actif = true;
                 _playerMovement.MovementActive = false;
                 _playerMovement.StopMovement();
                 _navMeshAgent.SetDestination(_detectorRadius.DetectedPlayer.transform.position);
-                StartCoroutine(Wait());
+                _fightCoroutine = StartCoroutine(Wait());
             }
         }
     }
@@ -42,7 +45,7 @@ public class EnemyLaunchBattle : MonoBehaviour
     {
         GenerateBattle.Instance.GenerateTerrain();
         FightStateManager fight = new(PlayerTeam.Instance.Team, _entitiesInBattle);
-        Destroy(gameObject);
+        fight.Init();
     }
 
     private void OnDrawGizmos()
