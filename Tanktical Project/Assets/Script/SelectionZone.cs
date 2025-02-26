@@ -57,6 +57,7 @@ public class SelectionZone : MonoBehaviour
     {
         yield return new WaitForSeconds(10);
         EnemySpawnZones();
+        PlayerSpawnZones();
     }
 
     public void EndBattle()
@@ -154,16 +155,16 @@ public class SelectionZone : MonoBehaviour
         List<ZoneSelectable> validZones = new List<ZoneSelectable>();
         foreach (ZoneSelectable zone in selectedZones)
         {
-            if (zone.transform.position.z > transform.position.z)
+            if (zone.transform.position.z < transform.position.z && !zone.IsRock)
             {
                 validZones.Add(zone);
             }
         }
         validZones = validZones.OrderBy(x => Random.value).ToList();
-        EnemySpawn.Clear();
+        PlayerSpawn.Clear();
         for (int i = 0; i < Mathf.Min(5, validZones.Count); i++)
         {
-            EnemySpawn.Add(validZones[i]);
+            PlayerSpawn.Add(validZones[i]);
         }
     }
 }
