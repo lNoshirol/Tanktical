@@ -46,14 +46,14 @@ public class Characters : MonoBehaviour
     [Dropdown("SkillsList")]
     public string FourthSkill;
 
-    public SkillsSandBox.Skill Skill1;
-    public SkillsSandBox.Skill Skill2;
-    public SkillsSandBox.Skill Skill3;
-    public SkillsSandBox.Skill Skill4;
+    public ActiveSkill Skill1;
+    public ActiveSkill Skill2;
+    public ActiveSkill Skill3;
+    public ActiveSkill Skill4;
     
     private List<string> SkillsList { get { return new List<string>() { "Basic Attack 1" ,"APFSDS 2", "HE 3", "HEAT 4", "APCBC 5", "ATGM 6", "Tactical Nuke 7"}; } }
 
-    private List<SkillsSandBox.Skill> _skillsObjectList = new();
+    private List<ActiveSkill> _skillsObjectList = new();
 
     #endregion
 
@@ -90,9 +90,9 @@ public class Characters : MonoBehaviour
         Debug.Log((int)test2 - 49);*/
 
         Skill1 = _skillsObjectList[FirstSkill[FirstSkill.Length - 1] - 49];
-        Skill2 = _skillsObjectList[SecondSkill[SecondSkill.Length - 2] - 1];
-        Skill3 = _skillsObjectList[SecondSkill[SecondSkill.Length - 2] - 1];
-        Skill4 = _skillsObjectList[SecondSkill[SecondSkill.Length - 2] - 1];
+        Skill2 = _skillsObjectList[SecondSkill[SecondSkill.Length - 1] - 49];
+        Skill3 = _skillsObjectList[SecondSkill[SecondSkill.Length - 1] - 49];
+        Skill4 = _skillsObjectList[SecondSkill[SecondSkill.Length - 1] - 49];
     }
 
     private void Death()
@@ -113,6 +113,10 @@ public class Characters : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        
+
+        
+
         _characterLife = Mathf.Clamp(_characterLife - damage, 0, _characterMaxLife);
 
         if (_characterLife <= 0)
@@ -143,11 +147,6 @@ public class Characters : MonoBehaviour
         if (characterType.tankModel != null)
         {
             _tankModel = characterType.tankModel;
-        }
-
-        if (gameObject.name == "Capsule (4)")
-        {
-            Debug.Log(_characterLife);
         }
     }
 

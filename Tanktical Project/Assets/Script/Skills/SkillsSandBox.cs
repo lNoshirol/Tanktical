@@ -74,6 +74,11 @@ namespace SkillsSandBox
 
         public override void Use(GameObject target)
         {
+            foreach (GameObject cell in GridHandler.Instance.CellsList)
+            {
+                cell.GetComponent<SpriteRenderer>().color = GridHandler.Instance.BlankCellColor;
+            }
+
             Characters targetCharacter;
             target.TryGetComponent(out targetCharacter);
 
@@ -91,9 +96,9 @@ namespace SkillsSandBox
                 {
                     float distance = Vector3.Distance(target.transform.position, ennemy.transform.position);
 
-                    if (distance <= zoneDamageRange)
+                    if (distance <= zoneDamageRange && ennemy != target)
                     {
-                        ennemy.GetComponent<Characters>().TakeDamage((int)(damageOutpout / (int)distance));
+                        ennemy.GetComponent<Characters>().TakeDamage((int)(damageOutpout/3));
                     }
                 }
             }
