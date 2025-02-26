@@ -5,7 +5,23 @@ using UnityEngine.InputSystem;
 
 public class ClickDetector : MonoBehaviour
 {
+    public static ClickDetector Instance;
+
     public Vector3 Pos;
+    public GameObject LastEnityHit;
+    public GameObject currentObjectHit;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Update()
     {
@@ -15,6 +31,30 @@ public class ClickDetector : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             Pos = hit.point;
+            currentObjectHit = hit.collider.gameObject;
+
+            GameObject objectHit = hit.collider.gameObject;
+
+            if (objectHit.CompareTag("ally") || objectHit.CompareTag("ennemy"))
+            {
+                LastEnityHit = objectHit;
+            }
+        }
+    }
+
+    public void OnClickToAttack(InputAction.CallbackContext callbackContext)
+    {
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit) && callbackContext.started)
+        {
+            GameObject objectHit = hit.collider.gameObject;
+
+            if (objectHit.CompareTag("ally") || objectHit.CompareTag("ennemy"))
+            {
+                SkillSelectorManager.Instance.UseAttack(objectHit);
+            }
         }
     }
 

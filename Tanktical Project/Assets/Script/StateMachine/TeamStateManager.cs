@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TeamStateManager
 {
-    protected Material _outlineMaterial;
     public FightStateManager FightStateManager;
 
     public FirstTeammateTurnState FirstMateState;
@@ -22,7 +21,7 @@ public class TeamStateManager
         new FifthTeammateTurnState()
     };
 
-    public List<Entity> EntitiesInTeam = new();
+    public List<Entity> EntitiesInTeam;
 
     public TeamTurnBaseState CurrentState { get; private set; }
 
@@ -30,26 +29,30 @@ public class TeamStateManager
     private int state = 0;
 
     // Constructor
-    public TeamStateManager(List<Entity> entitiesInTeam, FightStateManager fightStateManager, Material outline)
+    public TeamStateManager(List<Entity> entitiesInTeam, FightStateManager fightStateManager)
     {
         EntitiesInTeam = entitiesInTeam;
         FightStateManager = fightStateManager;
-        _outlineMaterial = outline;
 
         FirstMateState = (FirstTeammateTurnState)TeamTurnBaseStates[0];
         SecondMateState = (SecTeammateTurnState)TeamTurnBaseStates[1];
         ThirdMateState = (ThirdTeammateTurnState)TeamTurnBaseStates[2];
         FourthMateState = (FourthTeammateTurnState)TeamTurnBaseStates[3];
         FifthMateState = (FifthTeammateTurnState)TeamTurnBaseStates[4];
+
+        Init();
     }
 
     public void Init()
     {
+        bool isFriend = (FightStateManager.AlliesTurnStateManager == this);
+
         // iterate over team entities
         for (int i = 0; i < EntitiesInTeam.Count; i++)
         {
             state = i + 1;
             EntitiesInTeam[i].TeamStateManager = this;
+
             EntitiesInTeam[i].MeshRenderer.sharedMaterials[1].SetInt("_ShowOutline", 0);
 
             if (i == EntitiesInTeam.Count - 1)

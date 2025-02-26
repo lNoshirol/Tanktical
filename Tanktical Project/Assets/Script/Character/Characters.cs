@@ -29,6 +29,9 @@ public class Characters : MonoBehaviour
 
     #region Character Skills
 
+    [SerializeField] private string _allyTroopsTagTag;
+    [SerializeField] private string _ennemyTroopsTag;
+
     [Dropdown("SkillsList")]
     public string FirstSkill;
     
@@ -55,7 +58,7 @@ public class Characters : MonoBehaviour
 
     private void Start()
     {
-        _skillsObjectList.Add(new BasicAttack("Basic Attack", this));
+        _skillsObjectList.Add(new BasicAttack("Basic Attack", this, _ennemyTroopsTag));
 
         /*char test1 = FirstSkill[FirstSkill.Length - 1];
         char test2 = SecondSkill[SecondSkill.Length - 1];
@@ -85,7 +88,7 @@ public class Characters : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        _characterLife = Mathf.Clamp(0, _characterMaxLife, damage);
+        _characterLife = Mathf.Clamp(_characterLife - damage, 0, _characterMaxLife);
 
         if (_characterLife <= 0)
         {
@@ -95,7 +98,7 @@ public class Characters : MonoBehaviour
 
     public void Heal(int heal)
     {
-        _characterLife = Mathf.Clamp(0, _characterMaxLife, heal);
+        _characterLife = Mathf.Clamp(_characterLife + heal, 0, _characterMaxLife);
     }
 
     #endregion
@@ -106,6 +109,7 @@ public class Characters : MonoBehaviour
     private void Apply()
     {
         _characterMaxLife = characterType.characterMaxLife;
+        _characterLife = _characterMaxLife;
         _range = characterType.range;
         _baseAttaqueTDR = characterType.baseAttaqueTDR;
         _baseDamage = characterType.baseDamage;
@@ -117,5 +121,15 @@ public class Characters : MonoBehaviour
         {
             _tankModel = characterType.tankModel;
         }
+
+        if (gameObject.name == "Capsule (4)")
+        {
+            Debug.Log(_characterLife);
+        }
+    }
+
+    public int GetLife()
+    {
+        return _characterLife;
     }
 }
