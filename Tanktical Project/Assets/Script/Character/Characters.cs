@@ -91,8 +91,8 @@ public class Characters : MonoBehaviour
 
         Skill1 = _skillsObjectList[FirstSkill[FirstSkill.Length - 1] - 49];
         Skill2 = _skillsObjectList[SecondSkill[SecondSkill.Length - 1] - 49];
-        Skill3 = _skillsObjectList[SecondSkill[SecondSkill.Length - 1] - 49];
-        Skill4 = _skillsObjectList[SecondSkill[SecondSkill.Length - 1] - 49];
+        Skill3 = _skillsObjectList[ThirdSkill[ThirdSkill.Length - 1] - 49];
+        Skill4 = _skillsObjectList[FourthSkill[FourthSkill.Length - 1] - 49];
     }
 
     private void Death()
