@@ -23,7 +23,7 @@ public class GridHandler : MonoBehaviour
     public Color CaseInDamageZone;
 
     // System
-    private Dictionary<Vector2, GameObject> _map = new();
+    public Dictionary<Vector2, GameObject> _map = new();
 
     public List<Vector2> _newOffsets = new();
     [SerializeField] private List<Vector2> _oldOffsets = new();
@@ -98,7 +98,7 @@ public class GridHandler : MonoBehaviour
                 Vector2 oldOffset = _oldOffsets[i];
                 if (_map.ContainsKey(oldOffset))
                 {
-                    if (_map[oldOffset] == CurrentPointedCell) break;
+                    //if (_map[oldOffset] == CurrentPointedCell) break;
                     _map[oldOffset].TryGetComponent(out SpriteRenderer oldCellSpriteRend);
                     oldCellSpriteRend.color = BlankCellColor;
                     _oldOffsets.Remove(oldOffset);

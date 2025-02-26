@@ -8,7 +8,6 @@ public class StartSkillRangePreview : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("SAC A MERDE");
 
         Skill.SkillSelected();
         SkillSelectorManager.Instance.SetSelectedSkill(Skill);

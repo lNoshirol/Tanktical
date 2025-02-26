@@ -21,14 +21,17 @@ namespace SkillsSandBox
 
         public abstract void SkillSelected();
 
-        public abstract void SetSkillOwner(Characters owner);
 
-        public GameObject GetUnitCase(GameObject owner)
+        protected GameObject GetUnitCase(GameObject owner)
         {
-            foreach(GameObject cell in gridHandler.CellsList)
+            Vector2 ownerPosIn2dSpace = new Vector2(owner.transform.position.x, owner.transform.position.z);
+
+            foreach (GameObject cell in gridHandler.CellsList)
             {
-                if (Vector3.Distance(cell.transform.position, owner.transform.position) <= 0.99f)
+                Vector2 realCellPos = new Vector2(cell.transform.position.x, cell.transform.position.z);
+                if (Vector2.Distance(ownerPosIn2dSpace, realCellPos) <= 0.99f)
                 {
+                    Debug.Log($"Find ! charPos {ownerPosIn2dSpace}, cellPos {realCellPos} ");
                     return cell;
                 }
             }
@@ -74,6 +77,17 @@ namespace SkillsSandBox
             _skillOwnerEntity.EndTurn();
             SkillSelectorManager.Instance.SetSelectedSkill(null);
 
+            if (zoneDamageRange > 0 )
+            {
+                foreach (GameObject ennemy in EnitityList.instance.EnnemyList)
+                {
+                    if (Vector3.Distance(target.transform.position, ennemy.transform.position) <= zoneDamageRange)
+                    {
+
+                    }
+                }
+            }
+
             gridHandler._newOffsets.Clear();
         }
 
@@ -101,37 +115,9 @@ namespace SkillsSandBox
 
                 if (Vector3.Distance(_skillOwner.transform.position, cells.transform.position) >= skillRange.x && Vector3.Distance(_skillOwner.transform.position, cells.transform.position) <= skillRange.y) //  si dans la range du skill
                 {
-                    if (skillRange == Vector2.one) //si troupe ennemi sur case
-                    {
-                        currentCellsSpriteRenderer.color = gridHandler.EnnemyOnCaseRangePreview; //colorer la case en rouge
-                    }
-                    else if (skillRange == Vector2.right) //sinon si troupe allié sur case
-                    {
-                        currentCellsSpriteRenderer.color = gridHandler.AllyOnCaseRangePreview; //colorer la case en bleu
-                    }
-                    //    fin sinon
-                    else
-                    {
-                        currentCellsSpriteRenderer.color = gridHandler.CaseInSkillRange; //colorer case en vert
-                    }
-                    //    fin sinon
+                    currentCellsSpriteRenderer.color = gridHandler.CaseInSkillRange; //colorer case en bleu
                 }
-                //  fin si
-                //  sinon
-                else
-                {
-                    //    colorer en gris ou gris sombre
-
-                }
-                //  fin sinon
-
-                
             }
-        }
-
-        public override void SetSkillOwner(Characters owner)
-        {
-            _skillOwner = owner;
         }
     }
 
@@ -156,11 +142,6 @@ namespace SkillsSandBox
         {
 
         }
-
-        public override void SetSkillOwner(Characters owner)
-        {
-            _skillOwner = owner;
-        }
     }
 
     public class HE : Skill
@@ -180,11 +161,6 @@ namespace SkillsSandBox
         public override void SkillSelected()
         {
 
-        }
-
-        public override void SetSkillOwner(Characters owner)
-        {
-            _skillOwner = owner;
         }
     }
 }
