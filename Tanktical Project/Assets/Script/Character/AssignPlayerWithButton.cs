@@ -65,25 +65,25 @@ public class AssignPlayerWithButton : MonoBehaviour
 
         if (character.Skill1 != null)
         {
-            skillButton1.GetComponentInChildren<TextMeshProUGUI>().text = character.Skill1._skillName;
+            skillButton1.GetComponentInChildren<TextMeshProUGUI>().text = character.Skill1.skillName;
             SkillRangePreviewManager.GetComponent<StartSkillRangePreview>().Skill = character.Skill1;
         }
 
         if (character.Skill2 != null)
         {
-            skillButton2.GetComponentInChildren<TextMeshProUGUI>().text = character.Skill2._skillName;
+            skillButton2.GetComponentInChildren<TextMeshProUGUI>().text = character.Skill2.skillName;
             SkillRangePreviewManager.GetComponent<StartSkillRangePreview>().Skill = character.Skill1;
         }
 
         if (character.Skill1 != null)
         {
-            skillButton1.GetComponentInChildren<TextMeshProUGUI>().text = character.Skill1._skillName;
+            skillButton1.GetComponentInChildren<TextMeshProUGUI>().text = character.Skill1.skillName;
             SkillRangePreviewManager.GetComponent<StartSkillRangePreview>().Skill = character.Skill1;
         }
 
         if (character.Skill2 != null)
         {
-            skillButton2.GetComponentInChildren<TextMeshProUGUI>().text = character.Skill2._skillName;
+            skillButton2.GetComponentInChildren<TextMeshProUGUI>().text = character.Skill2.skillName;
             SkillRangePreviewManager.GetComponent<StartSkillRangePreview>().Skill = character.Skill1;
         }
     }

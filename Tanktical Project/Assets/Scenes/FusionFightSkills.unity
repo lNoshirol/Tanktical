@@ -5331,6 +5331,7 @@ GameObject:
   - component: {fileID: 321875307}
   - component: {fileID: 321875306}
   - component: {fileID: 321875305}
+  - component: {fileID: 321875308}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -5401,7 +5402,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 321875306}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 321875308}
+        m_TargetAssemblyTypeName: SkillAssignToButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &321875306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5440,6 +5453,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321875303}
   m_CullTransparentMesh: 1
+--- !u!114 &321875308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321875303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba8fe5dc5ca18c4aa02fbb7cdfdab1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &323408792
 GameObject:
   m_ObjectHideFlags: 0
@@ -8679,6 +8704,11 @@ MonoBehaviour:
   _ennemyTroopsTag: ally
   FirstSkill: Basic Attack 1
   SecondSkill: Basic Attack 1
+  ThirdSkill: 
+  FourthSkill: 
+  _healthBarFill: {fileID: 0}
+  _skillsPanel: {fileID: 0}
+  _skillPanelShownGizmo: {fileID: 0}
 --- !u!1 &546281187
 GameObject:
   m_ObjectHideFlags: 0
@@ -9162,6 +9192,11 @@ MonoBehaviour:
   _ennemyTroopsTag: ennemy
   FirstSkill: Basic Attack 1
   SecondSkill: Basic Attack 1
+  ThirdSkill: Basic Attack 1
+  FourthSkill: Basic Attack 1
+  _healthBarFill: {fileID: 0}
+  _skillsPanel: {fileID: 0}
+  _skillPanelShownGizmo: {fileID: 0}
 --- !u!1 &582327474
 GameObject:
   m_ObjectHideFlags: 0
@@ -12360,6 +12395,11 @@ MonoBehaviour:
   _ennemyTroopsTag: ally
   FirstSkill: Basic Attack 1
   SecondSkill: Basic Attack 1
+  ThirdSkill: 
+  FourthSkill: 
+  _healthBarFill: {fileID: 0}
+  _skillsPanel: {fileID: 0}
+  _skillPanelShownGizmo: {fileID: 0}
 --- !u!1 &757727524
 GameObject:
   m_ObjectHideFlags: 0
@@ -17132,7 +17172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e0816603bff03459198fceafd51166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _character: {fileID: 0}
+  _character: {fileID: 1571254487}
   _buttonsList:
   - {fileID: 307778366}
   - {fileID: 997247311}
@@ -20624,6 +20664,7 @@ GameObject:
   - component: {fileID: 1177288506}
   - component: {fileID: 1177288505}
   - component: {fileID: 1177288504}
+  - component: {fileID: 1177288507}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -20695,9 +20736,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 40217400}
-        m_TargetAssemblyTypeName: StatsHandler, Assembly-CSharp
-        m_MethodName: Heal
+      - m_Target: {fileID: 1177288507}
+        m_TargetAssemblyTypeName: SkillAssignToButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20745,6 +20786,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177288502}
   m_CullTransparentMesh: 1
+--- !u!114 &1177288507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177288502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba8fe5dc5ca18c4aa02fbb7cdfdab1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1183731667
 GameObject:
   m_ObjectHideFlags: 0
@@ -25169,6 +25222,11 @@ MonoBehaviour:
   _ennemyTroopsTag: ally
   FirstSkill: Basic Attack 1
   SecondSkill: Basic Attack 1
+  ThirdSkill: 
+  FourthSkill: 
+  _healthBarFill: {fileID: 0}
+  _skillsPanel: {fileID: 0}
+  _skillPanelShownGizmo: {fileID: 0}
 --- !u!1 &1435531720
 GameObject:
   m_ObjectHideFlags: 0
@@ -26858,6 +26916,11 @@ MonoBehaviour:
   _ennemyTroopsTag: ally
   FirstSkill: Basic Attack 1
   SecondSkill: Basic Attack 1
+  ThirdSkill: Basic Attack 1
+  FourthSkill: Basic Attack 1
+  _healthBarFill: {fileID: 0}
+  _skillsPanel: {fileID: 0}
+  _skillPanelShownGizmo: {fileID: 0}
 --- !u!1 &1549480284
 GameObject:
   m_ObjectHideFlags: 0
@@ -27004,6 +27067,7 @@ GameObject:
   - component: {fileID: 1556530350}
   - component: {fileID: 1556530349}
   - component: {fileID: 1556530348}
+  - component: {fileID: 1556530351}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -27074,7 +27138,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1556530349}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1556530351}
+        m_TargetAssemblyTypeName: SkillAssignToButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1556530349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27113,6 +27189,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556530346}
   m_CullTransparentMesh: 1
+--- !u!114 &1556530351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556530346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba8fe5dc5ca18c4aa02fbb7cdfdab1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1561093970
 GameObject:
   m_ObjectHideFlags: 0
@@ -27425,6 +27513,11 @@ MonoBehaviour:
   _ennemyTroopsTag: ennemy
   FirstSkill: Basic Attack 1
   SecondSkill: APFSDS 2
+  ThirdSkill: APCBC 5
+  FourthSkill: Tactical Nuke 7
+  _healthBarFill: {fileID: 0}
+  _skillsPanel: {fileID: 0}
+  _skillPanelShownGizmo: {fileID: 0}
 --- !u!1 &1576230224
 GameObject:
   m_ObjectHideFlags: 0
@@ -28705,6 +28798,11 @@ MonoBehaviour:
   _ennemyTroopsTag: ennemy
   FirstSkill: Basic Attack 1
   SecondSkill: Basic Attack 1
+  ThirdSkill: 
+  FourthSkill: 
+  _healthBarFill: {fileID: 0}
+  _skillsPanel: {fileID: 0}
+  _skillPanelShownGizmo: {fileID: 0}
 --- !u!1 &1667144124
 GameObject:
   m_ObjectHideFlags: 0
@@ -29710,6 +29808,11 @@ MonoBehaviour:
   _ennemyTroopsTag: ennemy
   FirstSkill: Basic Attack 1
   SecondSkill: Basic Attack 1
+  ThirdSkill: 
+  FourthSkill: 
+  _healthBarFill: {fileID: 0}
+  _skillsPanel: {fileID: 0}
+  _skillPanelShownGizmo: {fileID: 0}
 --- !u!1 &1713976264
 GameObject:
   m_ObjectHideFlags: 0
@@ -35879,6 +35982,7 @@ GameObject:
   - component: {fileID: 2120249374}
   - component: {fileID: 2120249373}
   - component: {fileID: 2120249372}
+  - component: {fileID: 2120249375}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -35950,9 +36054,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 40217400}
-        m_TargetAssemblyTypeName: StatsHandler, Assembly-CSharp
-        m_MethodName: Attack
+      - m_Target: {fileID: 2120249375}
+        m_TargetAssemblyTypeName: SkillAssignToButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36000,6 +36104,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120249370}
   m_CullTransparentMesh: 1
+--- !u!114 &2120249375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120249370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba8fe5dc5ca18c4aa02fbb7cdfdab1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2125507165
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,10 +40,18 @@ public class Characters : MonoBehaviour
     [Dropdown("SkillsList")]
     public string SecondSkill;
 
+    [Dropdown("SkillsList")]
+    public string ThirdSkill;
+
+    [Dropdown("SkillsList")]
+    public string FourthSkill;
+
     public SkillsSandBox.Skill Skill1;
     public SkillsSandBox.Skill Skill2;
+    public SkillsSandBox.Skill Skill3;
+    public SkillsSandBox.Skill Skill4;
     
-    private List<string> SkillsList { get { return new List<string>() { "Basic Attack 1" ,"APFSDS 2"}; } }
+    private List<string> SkillsList { get { return new List<string>() { "Basic Attack 1" ,"APFSDS 2", "HE 3", "HEAT 4", "APCBC 5", "ATGM 6", "Tactical Nuke 7"}; } }
 
     private List<SkillsSandBox.Skill> _skillsObjectList = new();
 
@@ -67,7 +75,13 @@ public class Characters : MonoBehaviour
 
     private void Start()
     {
-        _skillsObjectList.Add(new BasicAttack("Basic Attack", this, _ennemyTroopsTag));
+        _skillsObjectList.Add(new ActiveSkill("Basic Attack", this, _ennemyTroopsTag, 100, 0, _range, 0));
+        _skillsObjectList.Add(new ActiveSkill("Armor Piercing Fin Stabilized Detachable Sabot", this, _ennemyTroopsTag, 250, 0, new Vector2(0, 15), 3));
+        _skillsObjectList.Add(new ActiveSkill("High Explosive", this, _ennemyTroopsTag, 125, 2, new Vector2(0, 10), 3));
+        _skillsObjectList.Add(new ActiveSkill("High Explosive Anti Tank", this, _ennemyTroopsTag, 175, 0, new Vector2(0, 13), 2));
+        _skillsObjectList.Add(new ActiveSkill("Armor Piercing Capped Ballistic Capped", this, _ennemyTroopsTag, 300, 10, new Vector2(0, 10), 2));
+        _skillsObjectList.Add(new ActiveSkill("Anti Tank Guided Missile", this, _ennemyTroopsTag, 500, 0, new Vector2(0, 20), 4));
+        _skillsObjectList.Add(new ActiveSkill("Tactical Nuke", this, _ennemyTroopsTag, 500, 4, new Vector2(0, 20), 6));
 
         /*char test1 = FirstSkill[FirstSkill.Length - 1];
         char test2 = SecondSkill[SecondSkill.Length - 1];
@@ -75,8 +89,10 @@ public class Characters : MonoBehaviour
         Debug.Log((int)test1 - 49);
         Debug.Log((int)test2 - 49);*/
 
-        Skill1 = _skillsObjectList[(int)FirstSkill[FirstSkill.Length - 1] - 49];
-        //Skill2 = _skillsObjectList[SecondSkill[SecondSkill.Length - 2] - 1];
+        Skill1 = _skillsObjectList[FirstSkill[FirstSkill.Length - 1] - 49];
+        Skill2 = _skillsObjectList[SecondSkill[SecondSkill.Length - 2] - 1];
+        Skill3 = _skillsObjectList[SecondSkill[SecondSkill.Length - 2] - 1];
+        Skill4 = _skillsObjectList[SecondSkill[SecondSkill.Length - 2] - 1];
     }
 
     private void Death()

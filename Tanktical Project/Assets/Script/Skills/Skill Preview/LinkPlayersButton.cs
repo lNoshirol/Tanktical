@@ -21,7 +21,7 @@ public class LinkPlayersButton : MonoBehaviour
 
         foreach (GameObject button in _buttonsList)
         {
-            button.GetComponentInChildren<TextMeshProUGUI>().text = button.GetComponent<SkillAssignToButton>().Skill._skillName;
+            button.GetComponentInChildren<TextMeshProUGUI>().text = button.GetComponent<SkillAssignToButton>().Skill.skillName;
         }
     }
 }

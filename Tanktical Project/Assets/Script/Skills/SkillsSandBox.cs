@@ -11,11 +11,23 @@ namespace SkillsSandBox
         protected GridHandler gridHandler;
         protected ClickDetector clickDetector;
 
-        public string _skillName;
+        public string TargetTag;
+
+        public int damageOutpout;
+
+        public float zoneDamageRange;
+
+        public string skillName;
+
         public Characters _skillOwner;
+
         public int damageMultiplier;
+
         public Vector2 skillRange;
+
         public int explosionDamageRange;
+
+        public int TDR;
 
         public abstract void Use(GameObject target);
 
@@ -39,29 +51,25 @@ namespace SkillsSandBox
         }
     }
 
-    public class BasicAttack : Skill
+    public class ActiveSkill : Skill
     {
-        public BasicAttack(string name, Characters owner, string targetTag) 
-        { 
-            _skillName = name;
-            _skillOwner = owner;
+        public ActiveSkill(string _name, Characters _owner, string _targetTag, int _damageMultiplayer, int _zoneDamage, Vector2 _skillRange, int _TDR)
+        {
+            skillName = _name;
+            _skillOwner = _owner;
 
-            damageMultiplier = 100;
-            zoneDamageRange = 3;
+            damageMultiplier = _damageMultiplayer;
+            zoneDamageRange = _zoneDamage;
 
-            damageOutpout = _skillOwner.characterType.baseDamage * (damageMultiplier/100);
-            skillRange = _skillOwner.characterType.range;
+            damageOutpout = _skillOwner.characterType.baseDamage * (damageMultiplier / 100);
+            skillRange = _skillRange;
 
             gridHandler = GridHandler.Instance;
             clickDetector = ClickDetector.Instance;
+            TDR = _TDR;
         }
 
-        public string TargetTag;
-
-        public int damageOutpout;
-
-        public float zoneDamageRange;
-
+        
 
 
         public override void Use(GameObject target)
@@ -77,13 +85,15 @@ namespace SkillsSandBox
             _skillOwnerEntity.EndTurn();
             SkillSelectorManager.Instance.SetSelectedSkill(null);
 
-            if (zoneDamageRange > 0 )
+            if (zoneDamageRange > 0)
             {
                 foreach (GameObject ennemy in EnitityList.instance.EnnemyList)
                 {
-                    if (Vector3.Distance(target.transform.position, ennemy.transform.position) <= zoneDamageRange)
-                    {
+                    float distance = Vector3.Distance(target.transform.position, ennemy.transform.position);
 
+                    if (distance <= zoneDamageRange)
+                    {
+                        ennemy.GetComponent<Characters>().TakeDamage((int)(damageOutpout / (int)distance));
                     }
                 }
             }
@@ -118,49 +128,6 @@ namespace SkillsSandBox
                     currentCellsSpriteRenderer.color = gridHandler.CaseInSkillRange; //colorer case en bleu
                 }
             }
-        }
-    }
-
-    public class APFSDS : Skill
-    {
-        public APFSDS(string name)
-        {
-            _skillName = name;
-        }
-
-        public override void Use(GameObject target)
-        {
-
-        }
-
-        public void SecondShot()
-        {
-
-        }
-
-        public override void SkillSelected()
-        {
-
-        }
-    }
-
-    public class HE : Skill
-    {
-        public HE(string name, Characters skillOwner)
-        {
-            _skillName = name;
-        }
-
-
-
-        public override void Use(GameObject target)
-        {
-
-        }
-
-        public override void SkillSelected()
-        {
-
         }
     }
 }
