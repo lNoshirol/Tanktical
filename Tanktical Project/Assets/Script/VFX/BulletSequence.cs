@@ -51,15 +51,17 @@ public class BulletSequence : VFXSequenceBase
             {
                 isbulletFinished = true;
                 bullet.gameObject.SetActive(false);
-                callback();
+                if(callback != null) callback();
             });
 
-            while (!isbulletFinished || _fire.HasAnySystemAwake() || _smoke.HasAnySystemAwake())
-            {
+            do {
                 if (_cts.IsCancellationRequested) break;
                 await UniTask.DelayFrame(1);
-            }
+            } while (!isbulletFinished || _fire.HasAnySystemAwake() || _smoke.HasAnySystemAwake());
 
+            _smoke.Stop();
+            _fire.Stop();
+            bullet.transform.DOKill();
             this.gameObject.SetActive(false);
         }
     }

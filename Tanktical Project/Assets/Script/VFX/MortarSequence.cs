@@ -51,15 +51,18 @@ public class MortarSequence : VFXSequenceBase
             {
                 isCannonBallFinished = true;
                 cannonBall.gameObject.SetActive(false);
-                callback();
+                if(callback != null) callback();
             });
 
-            while (!isCannonBallFinished || _fire.HasAnySystemAwake() || _smoke.HasAnySystemAwake())
-            {
-                if (_cts.IsCancellationRequested) return;
+            do {
+                if (_cts.IsCancellationRequested) break;
                 await UniTask.DelayFrame(1);
-            }
+            } while (!isCannonBallFinished || _fire.HasAnySystemAwake() || _smoke.HasAnySystemAwake());
 
+            _smoke.Stop();
+            _fire.Stop();
+            cannonBall.transform.DOKill();
+            
             this.gameObject.SetActive(false);
         }
     }
