@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    [SerializeField] string _ssceneNameToSwitch;
+    [SerializeField] string _sceneName;
 
-    public void SwitchScene(string sceneName)
+    public void SwitchScene()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(_sceneName);
     }
 }
