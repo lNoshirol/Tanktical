@@ -9,6 +9,7 @@ public abstract class VFXSequenceBase : MonoBehaviour
     protected CancellationTokenSource _cts = new CancellationTokenSource();
 
     public delegate void OnHitCallback();
+    public abstract void Init(Vector3 cible, bool fromTheEnemy);
     public abstract UniTask PlaySequence(OnHitCallback callback);
     public abstract void StopSequence();   
 }

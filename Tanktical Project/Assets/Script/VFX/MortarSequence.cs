@@ -11,8 +11,9 @@ public class MortarSequence : VFXSequenceBase
     [SerializeField] private VisualEffect _fire;
 
     private Vector3 _endPosition;
-
-    public void Init(Vector3 cannonBallOffset)
+    
+    /// <inheritdoc cref="VFXSequenceBase"/>
+    public override void Init(Vector3 cannonBallOffset, bool _)
     {
         _endPosition = cannonBallOffset;
     }

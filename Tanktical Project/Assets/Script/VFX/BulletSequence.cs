@@ -12,7 +12,8 @@ public class BulletSequence : VFXSequenceBase
 
     private Vector3 _endPosition;
 
-    public void Init(Vector3 bulletOffset)
+    /// <inheritdoc cref="VFXSequenceBase"/>
+    public override void Init(Vector3 bulletOffset, bool _)
     {
         _endPosition = bulletOffset;
     }

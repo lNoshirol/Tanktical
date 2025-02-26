@@ -14,7 +14,8 @@ public class TacticalNukeVFX : VFXSequenceBase
     
     private Camera _camera;
     
-    public void Init(Vector3 nukeFinalPosition, bool enemy)
+    /// <inheritdoc cref="VFXSequenceBase"/>
+    public override void Init(Vector3 nukeFinalPosition, bool enemy)
     {
         _endPosition = nukeFinalPosition;
         _enemy = enemy;
