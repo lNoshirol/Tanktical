@@ -43,8 +43,11 @@ public class TurnCounter : MonoBehaviour
 
     public int TurnNumber { get; private set; }
 
+    [SerializeField] private int ShowTurnNumberInInspector;
+
     public void IncrementTurnCount()
     {
         TurnNumber++;
+        ShowTurnNumberInInspector = TurnNumber;
     }
 }

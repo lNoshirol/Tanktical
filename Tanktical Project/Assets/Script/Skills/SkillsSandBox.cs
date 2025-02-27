@@ -1,6 +1,7 @@
 using NaughtyAttributes.Test;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,11 +12,25 @@ namespace SkillsSandBox
         protected GridHandler gridHandler;
         protected ClickDetector clickDetector;
 
-        public string _skillName;
+        public string TargetTag;
+
+        public int damageOutpout;
+
+        public float zoneDamageRange;
+
+        public string skillName;
+
         public Characters _skillOwner;
+
         public int damageMultiplier;
+
         public Vector2 skillRange;
+
         public int explosionDamageRange;
+
+        public int TDR;
+
+        public GameObject VfxToUse;
 
         public abstract void Use(GameObject target);
 
@@ -39,33 +54,89 @@ namespace SkillsSandBox
         }
     }
 
-    public class BasicAttack : Skill
+    public class ActiveSkill : Skill
     {
-        public BasicAttack(string name, Characters owner, string targetTag) 
-        { 
-            _skillName = name;
-            _skillOwner = owner;
+        public ActiveSkill(string _name, Characters _owner, string _targetTag, int _damageMultiplayer, int _zoneDamage, Vector2 _skillRange, int _TDR, GameObject vfx)
+        {
+            skillName = _name;
+            _skillOwner = _owner;
 
-            damageMultiplier = 100;
-            zoneDamageRange = 3;
+            damageMultiplier = _damageMultiplayer;
+            zoneDamageRange = _zoneDamage;
 
-            damageOutpout = _skillOwner.characterType.baseDamage * (damageMultiplier/100);
-            skillRange = _skillOwner.characterType.range;
+            damageOutpout = _skillOwner.characterType.baseDamage * (damageMultiplier / 100);
+            skillRange = _skillRange;
 
             gridHandler = GridHandler.Instance;
             clickDetector = ClickDetector.Instance;
+            TDR = _TDR;
+
+            VfxToUse = vfx;
         }
 
-        public string TargetTag;
-
-        public int damageOutpout;
-
-        public float zoneDamageRange;
-
+        
 
 
         public override void Use(GameObject target)
         {
+
+            #region aled
+
+            VfxToUse.transform.position = _skillOwner.transform.position;
+
+            switch (skillName)
+            {
+                case "Basic Attack":
+                    VfxToUse.GetComponent<BulletSequence>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<BulletSequence>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+                case "Armor Piercing Fin Stabilized Detachable Sabot":
+                    VfxToUse.GetComponent<BulletSequence>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<BulletSequence>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+                case "High Explosive":
+                    VfxToUse.GetComponent<MortarSequence>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<MortarSequence>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+                case "High Explosive Anti Tank":
+                    VfxToUse.GetComponent<MortarSequence>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<MortarSequence>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+                case "Armor Piercing Capped Ballistic Capped":
+                    VfxToUse.GetComponent<BulletSequence>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<BulletSequence>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+                case "Anti Tank Guided Missile":
+                    VfxToUse.GetComponent<BulletSequence>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<BulletSequence>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+                case "Tactical Nuke":
+                    VfxToUse.GetComponent<TacticalNukeVFX>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<TacticalNukeVFX>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+            #endregion
+
+            }
+
+            foreach (GameObject cell in GridHandler.Instance.CellsList)
+            {
+                cell.GetComponent<SpriteRenderer>().color = GridHandler.Instance.BlankCellColor;
+            }
+
             Characters targetCharacter;
             target.TryGetComponent(out targetCharacter);
 
@@ -77,13 +148,15 @@ namespace SkillsSandBox
             _skillOwnerEntity.EndTurn();
             SkillSelectorManager.Instance.SetSelectedSkill(null);
 
-            if (zoneDamageRange > 0 )
+            if (zoneDamageRange > 0)
             {
                 foreach (GameObject ennemy in EnitityList.instance.EnnemyList)
                 {
-                    if (Vector3.Distance(target.transform.position, ennemy.transform.position) <= zoneDamageRange)
-                    {
+                    float distance = Vector3.Distance(target.transform.position, ennemy.transform.position);
 
+                    if (distance <= zoneDamageRange && ennemy != target)
+                    {
+                        ennemy.GetComponent<Characters>().TakeDamage((int)(damageOutpout/3));
                     }
                 }
             }
@@ -118,49 +191,6 @@ namespace SkillsSandBox
                     currentCellsSpriteRenderer.color = gridHandler.CaseInSkillRange; //colorer case en bleu
                 }
             }
-        }
-    }
-
-    public class APFSDS : Skill
-    {
-        public APFSDS(string name)
-        {
-            _skillName = name;
-        }
-
-        public override void Use(GameObject target)
-        {
-
-        }
-
-        public void SecondShot()
-        {
-
-        }
-
-        public override void SkillSelected()
-        {
-
-        }
-    }
-
-    public class HE : Skill
-    {
-        public HE(string name, Characters skillOwner)
-        {
-            _skillName = name;
-        }
-
-
-
-        public override void Use(GameObject target)
-        {
-
-        }
-
-        public override void SkillSelected()
-        {
-
         }
     }
 }
