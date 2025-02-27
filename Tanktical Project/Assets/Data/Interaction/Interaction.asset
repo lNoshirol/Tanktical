@@ -21,8 +21,9 @@ MonoBehaviour:
     - rid: 834599154681643008
       type: {class: SayAction, ns: , asm: Assembly-CSharp}
       data:
-        _text: J'aime les short bleu, est-ce que t'aime toi ausssi ?
-        _time: 2
+        _text: "Tu veux jouer aux gros bras ? Moi, j\u2019ai du blindage en stock,
+          pas du Tonk comme toi !"
+        _time: 5
     - rid: 834599154681643009
       type: {class: TerminateAction, ns: , asm: Assembly-CSharp}
       data: 

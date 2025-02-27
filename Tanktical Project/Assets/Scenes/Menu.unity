@@ -960,7 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa31b26e122ef4e40b3c644d8aefa772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: TestAmbre
+  _sceneName: GameplayOverworld
 --- !u!114 &857681164
 MonoBehaviour:
   m_ObjectHideFlags: 0

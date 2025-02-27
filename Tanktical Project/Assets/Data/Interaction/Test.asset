@@ -16,20 +16,24 @@ MonoBehaviour:
   - rid: 2966590268184461314
   - rid: 2966590268184461315
   - rid: 2966590268184461316
+  - rid: 834599208220884993
   references:
     version: 2
     RefIds:
+    - rid: 834599208220884993
+      type: {class: TerminateAction, ns: , asm: Assembly-CSharp}
+      data: 
     - rid: 2966590268184461314
       type: {class: SayAction, ns: , asm: Assembly-CSharp}
       data:
-        _text: This is dialogue 1
-        _time: 2
+        _text: Oh des Tonk !
+        _time: 3
     - rid: 2966590268184461315
       type: {class: WaitAction, ns: , asm: Assembly-CSharp}
       data:
-        _time: 3
+        _time: 1
     - rid: 2966590268184461316
       type: {class: SayAction, ns: , asm: Assembly-CSharp}
       data:
-        _text: And this is dialogue 2
-        _time: 2
+        _text: "S'il vous plait \xE9liminez les Tank qui sont dans les parages"
+        _time: 6

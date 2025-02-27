@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PauseGame : MonoBehaviour
 {
     public bool gamePaused;
+    [SerializeField] private GameObject _panelPause;
 
     private void Start()
     {
@@ -26,11 +25,13 @@ public class PauseGame : MonoBehaviour
         {
             Time.timeScale = 0;
             gamePaused = true;
+            _panelPause.SetActive(true);
         }
         else
         {
             Time.timeScale = 1;
             gamePaused = false;
+            _panelPause.SetActive(false);
         }
     }
 }
