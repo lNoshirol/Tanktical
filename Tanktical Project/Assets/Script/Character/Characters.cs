@@ -65,6 +65,16 @@ public class Characters : MonoBehaviour
     private bool _isSkillsPanelShown;
     #endregion
 
+    #region VFX
+
+    public GameObject FireBulletVFX;
+    public GameObject ExplosionVFX;
+    public GameObject FireVFX;
+    public GameObject MortarVFX;
+    public GameObject TacticalNukeVFX;
+
+    #endregion
+
     #region Private Functions
 
     private void Awake()
@@ -75,19 +85,13 @@ public class Characters : MonoBehaviour
 
     private void Start()
     {
-        _skillsObjectList.Add(new ActiveSkill("Basic Attack", this, _ennemyTroopsTag, 100, 0, _range, 0));
-        _skillsObjectList.Add(new ActiveSkill("Armor Piercing Fin Stabilized Detachable Sabot", this, _ennemyTroopsTag, 250, 0, new Vector2(0, 15), 3));
-        _skillsObjectList.Add(new ActiveSkill("High Explosive", this, _ennemyTroopsTag, 125, 2, new Vector2(0, 10), 3));
-        _skillsObjectList.Add(new ActiveSkill("High Explosive Anti Tank", this, _ennemyTroopsTag, 175, 0, new Vector2(0, 13), 2));
-        _skillsObjectList.Add(new ActiveSkill("Armor Piercing Capped Ballistic Capped", this, _ennemyTroopsTag, 300, 10, new Vector2(0, 10), 2));
-        _skillsObjectList.Add(new ActiveSkill("Anti Tank Guided Missile", this, _ennemyTroopsTag, 500, 0, new Vector2(0, 20), 4));
-        _skillsObjectList.Add(new ActiveSkill("Tactical Nuke", this, _ennemyTroopsTag, 500, 4, new Vector2(0, 20), 6));
-
-        /*char test1 = FirstSkill[FirstSkill.Length - 1];
-        char test2 = SecondSkill[SecondSkill.Length - 1];
-
-        Debug.Log((int)test1 - 49);
-        Debug.Log((int)test2 - 49);*/
+        _skillsObjectList.Add(new ActiveSkill("Basic Attack", this, _ennemyTroopsTag, 100, 0, _range, 0, FireBulletVFX));
+        _skillsObjectList.Add(new ActiveSkill("Armor Piercing Fin Stabilized Detachable Sabot", this, _ennemyTroopsTag, 250, 0, new Vector2(0, 15), 3, FireBulletVFX));
+        _skillsObjectList.Add(new ActiveSkill("High Explosive", this, _ennemyTroopsTag, 125, 2, new Vector2(0, 10), 3, MortarVFX));
+        _skillsObjectList.Add(new ActiveSkill("High Explosive Anti Tank", this, _ennemyTroopsTag, 175, 0, new Vector2(0, 13), 2, MortarVFX));
+        _skillsObjectList.Add(new ActiveSkill("Armor Piercing Capped Ballistic Capped", this, _ennemyTroopsTag, 300, 0, new Vector2(0, 10), 2, FireBulletVFX));
+        _skillsObjectList.Add(new ActiveSkill("Anti Tank Guided Missile", this, _ennemyTroopsTag, 500, 0, new Vector2(0, 20), 4, FireBulletVFX));
+        _skillsObjectList.Add(new ActiveSkill("Tactical Nuke", this, _ennemyTroopsTag, 500, 4, new Vector2(0, 20), 6, TacticalNukeVFX));
 
         Skill1 = _skillsObjectList[FirstSkill[FirstSkill.Length - 1] - 49];
         Skill2 = _skillsObjectList[SecondSkill[SecondSkill.Length - 1] - 49];

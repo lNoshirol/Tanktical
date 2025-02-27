@@ -1,6 +1,7 @@
 using NaughtyAttributes.Test;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -29,6 +30,8 @@ namespace SkillsSandBox
 
         public int TDR;
 
+        public GameObject VfxToUse;
+
         public abstract void Use(GameObject target);
 
         public abstract void SkillSelected();
@@ -53,7 +56,7 @@ namespace SkillsSandBox
 
     public class ActiveSkill : Skill
     {
-        public ActiveSkill(string _name, Characters _owner, string _targetTag, int _damageMultiplayer, int _zoneDamage, Vector2 _skillRange, int _TDR)
+        public ActiveSkill(string _name, Characters _owner, string _targetTag, int _damageMultiplayer, int _zoneDamage, Vector2 _skillRange, int _TDR, GameObject vfx)
         {
             skillName = _name;
             _skillOwner = _owner;
@@ -67,6 +70,8 @@ namespace SkillsSandBox
             gridHandler = GridHandler.Instance;
             clickDetector = ClickDetector.Instance;
             TDR = _TDR;
+
+            VfxToUse = vfx;
         }
 
         
@@ -74,6 +79,59 @@ namespace SkillsSandBox
 
         public override void Use(GameObject target)
         {
+
+            #region aled
+
+            VfxToUse.transform.position = _skillOwner.transform.position;
+
+            switch (skillName)
+            {
+                case "Basic Attack":
+                    VfxToUse.GetComponent<BulletSequence>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<BulletSequence>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+                case "Armor Piercing Fin Stabilized Detachable Sabot":
+                    VfxToUse.GetComponent<BulletSequence>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<BulletSequence>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+                case "High Explosive":
+                    VfxToUse.GetComponent<MortarSequence>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<MortarSequence>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+                case "High Explosive Anti Tank":
+                    VfxToUse.GetComponent<MortarSequence>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<MortarSequence>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+                case "Armor Piercing Capped Ballistic Capped":
+                    VfxToUse.GetComponent<BulletSequence>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<BulletSequence>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+                case "Anti Tank Guided Missile":
+                    VfxToUse.GetComponent<BulletSequence>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<BulletSequence>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+                case "Tactical Nuke":
+                    VfxToUse.GetComponent<TacticalNukeVFX>().Init(target.transform.position, false);
+                    VfxToUse.GetComponent<TacticalNukeVFX>().PlaySequence(() =>
+                    {
+                    });
+                    break;
+            #endregion
+
+            }
+
             foreach (GameObject cell in GridHandler.Instance.CellsList)
             {
                 cell.GetComponent<SpriteRenderer>().color = GridHandler.Instance.BlankCellColor;
